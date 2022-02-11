@@ -11,7 +11,6 @@ const userSchema = Joi.object({
 
 const alreadyExists = async (email) => {
   const user = await User.getOneByEmail(email);
-  console.log(user);
   return user || null;
 };
 
