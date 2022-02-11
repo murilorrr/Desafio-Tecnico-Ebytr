@@ -4,9 +4,9 @@
   "description": "Back-end com express do desafio tecnico",
   "main": "./server/index.js",
   "scripts": {
-    "start": "node ./server/index.js",
+    "start": "node ./server/server.js",
     "test": "mocha ./test/**/*$NAME*.{test,spec}.js --exit",
-    "debug": "nodemon ./server/index.js"
+    "debug": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
