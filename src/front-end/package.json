@@ -1,0 +1,14 @@
+{
+  "name": "desafio-tecnico-ebytr-front-end",
+  "version": "1.0.0",
+  "description": "Front-end com React do desafio tecnico",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Murilo Ribeiro",
+  "license": "ISC",
+  "dependencies": {
+    "create-react-app": "^5.0.0"
+  }
+}
