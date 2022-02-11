@@ -1,17 +1,18 @@
 {
   "root": true,
   "env": {
-      "browser": true,
-      "commonjs": true,
-      "es2021": true
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "mocha": true
   },
   "extends": [
-      "airbnb-base"
+    "airbnb-base"
   ],
   "parserOptions": {
-      "ecmaVersion": "latest"
+    "ecmaVersion": "latest"
   },
   "rules": {
-      "no-console": "off"
+    "no-console": "off"
   }
 }
