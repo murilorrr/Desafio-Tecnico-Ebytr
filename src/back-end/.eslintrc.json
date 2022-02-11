@@ -12,7 +12,6 @@
       "ecmaVersion": "latest"
   },
   "rules": {
-      "no-console": "off",
-      "no-unused-vars": ["error", { "vars": "next", "args": "after-used", "ignoreRestSiblings": true }]
+      "no-console": "off"
   }
 }

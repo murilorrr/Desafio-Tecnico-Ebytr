@@ -17,7 +17,7 @@ const alreadyExists = async (email) => {
 
 module.exports = async (user) => {
   const { email } = user;
-  const { error } = userSchema.validate(user); 
+  const { error } = userSchema.validate(user);
   if (error) throw errorHandler(StatusCodes.BAD_REQUEST, error.message);
 
   const exists = await alreadyExists(email);

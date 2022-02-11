@@ -9,10 +9,10 @@ const connection = () => MongoClient
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-    .then((conn) => conn.db(DB_NAME))
-    .catch((err) => {
-      console.error(err);
-      process.exit();
-    });
+  .then((conn) => conn.db(DB_NAME))
+  .catch((err) => {
+    console.error(err);
+    process.exit();
+  });
 
 module.exports = connection;

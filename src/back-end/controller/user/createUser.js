@@ -7,6 +7,6 @@ module.exports = async (req, res, next) => {
     const result = await userService.create(user);
     return res.status(StatusCodes.CREATED).json(result);
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };
