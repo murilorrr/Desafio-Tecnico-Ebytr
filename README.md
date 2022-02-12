@@ -38,6 +38,46 @@ At Ebytr the development team uses Stack MERN to create their applications. It h
 
 and much more...
 
+## Getting started
+
+Clone the project from Github :
+
+```sh
+git clone git@github.com:murilorsv14/Desafio-Tecnico-Ebytr.git
+cd Desafio-Tecnico-Ebytr
+```
+
+## Docker Method
+
+If you have docker installed, you can run with:
+```sh
+docker-compose up
+```
+
+If everything is ok, you will be able to open at:
+
+```bash
+http://localhost:3000
+```
+## Default method
+
+### Install backend and frontend folder dependencies and start react app and node server:
+
+```sh
+$ cd src/back-end
+$ npm install
+$ npm start
+$ cd src/front-end or ../back-end
+$ npm install
+$npm start
+```
+
+If everything is ok, you will be able to open at:
+
+```bash
+http://localhost:3000
+```
+
 ## :handshake: **Contributing**
 
 This project is for study purposes too, so send me an email telling me what you are doing and why you are doing it, teach me what you know
