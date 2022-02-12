@@ -1,2 +1,2 @@
-export { default as createUser } from './createUser';
-export { default as loginUser } from './loginUser'
+export { default as CreateUser } from './createUser';
+export { default as LoginUser } from './loginUser'
