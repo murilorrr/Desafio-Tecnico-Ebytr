@@ -2,7 +2,7 @@ version: '3'
 services:
   react:
     restart: always
-    build: ./front-end
+    build: ./src/front-end
     ports:
       - 3000:3000
     depends_on:
@@ -12,7 +12,7 @@ services:
     restart: always
     environment:
       - HOST=mongo
-    build: ./back-end
+    build: ./src/back-end
     ports:
       - 3001:3001
     volumes:
