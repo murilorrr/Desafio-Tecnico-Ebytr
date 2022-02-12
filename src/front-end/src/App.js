@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
-import { createUser, loginUser } from './pages'
+import { CreateUser, LoginUser } from './pages'
 
 function App() {
   return (
     <Switch>
-      <Route exact path="/" component={loginUser}></Route>
-      <Route exact path="/createUser" component={createUser}></Route>
+      <Route exact path="/" component={LoginUser}></Route>
+      <Route exact path="/createUser" component={CreateUser}></Route>
     </Switch>
   );
 }
