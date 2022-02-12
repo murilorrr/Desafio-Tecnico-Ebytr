@@ -4,7 +4,7 @@ const { errorHandler } = require('../../utils/index');
 const User = require('../../model')('User');
 
 const userSchema = Joi.object({
-  name: Joi.string().min(8),
+  name: Joi.string().min(8).required(),
   email: Joi.string().email().required(),
   password: Joi.string().length(6).required(),
 });
