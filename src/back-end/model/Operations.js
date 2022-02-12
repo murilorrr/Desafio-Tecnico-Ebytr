@@ -24,7 +24,32 @@ const getOneByEmail = async (collection, email) => {
   }
 };
 
+const getAll = async (collection) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection))
+      .find({})
+      .toArray();
+    return result || null;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+const getOne = async (collection, email, password) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection)
+        .findOne({ email, password }));
+    return result || null;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 module.exports = (collection) => ({
   createOne: (entity) => createOne(collection, entity),
+  getAll: () => getAll(collection),
+  getOne: (email, password) => getOne(collection, email, password),
   getOneByEmail: (email) => getOneByEmail(collection, email),
 });
