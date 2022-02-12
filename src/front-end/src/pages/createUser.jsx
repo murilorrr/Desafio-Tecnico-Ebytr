@@ -28,7 +28,7 @@ const createUser = () => {
           </div>
           <button type="submit" class="btn submit-button">Create account</button>
         </div>
-        <p id='create-link'>Don't have an account yet? <Link to={'tasks'}>Join today</Link></p>
+        <p id='login-link'>Already have an account? <Link to={'/'}>Log in</Link></p>
       </div>
     </div>
   )
