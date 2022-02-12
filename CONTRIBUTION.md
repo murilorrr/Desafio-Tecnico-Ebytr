@@ -18,6 +18,7 @@ docker-compose up
 
 - _Node:_ `^14.16.1` or higher.
 - _Npm:_ `8.3.0` or higher.
+- _Git:_ `2.25.1` or higher.
 
 ## Getting started
 
