@@ -40,6 +40,13 @@ and much more...
 
 ## Getting started
 
+### Pre-requisites
+
+- _Node:_ `^14.16.1` or higher.
+- _Npm:_ `8.3.0` or higher.
+- _Git:_ `2.25.1` or higher.
+- _Docker(Optional):_ `20.10.12` or higher. 
+
 Clone the project from Github :
 
 ```sh
@@ -53,7 +60,7 @@ If you have docker installed, you can run with:
 ```sh
 $ docker-compose up
 ```
-
+Pre-requisites
 If everything is ok, you will be able to open at:
 
 ```bash
