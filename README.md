@@ -16,7 +16,7 @@
 
 ## :blush: **Why?**
 <h4>Hypothetical context:</h4>
-The company by Etr is experiencing productivity/control problems because as employees they have been having difficulty in organizing their individual tasks. For this reason, product director Carolina Bigonha decided to implement a new way of organizing tasks.
+The company Ebytr is experiencing productivity/control problems because as employees they have been having difficulty in organizing their individual tasks. For this reason, product director Carolina Bigonha decided to implement a new way of organizing tasks.
 You were a person hired to develop a system capable of helping collaborating people to organize and be more productive.
 At Ebytr the development team uses Stack MERN to create their applications. It has been combined with Ebytr that you will use this same stack to solve the organization and productivity problem of the company.
 
