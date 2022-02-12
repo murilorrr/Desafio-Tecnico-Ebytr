@@ -23,7 +23,7 @@ const loginUser = () => {
           </div>
           <button type="submit" class="btn submit-button">Login now</button>
         </div>
-        <p id='create-link'>Don't have an account yet? <Link to={'tasks'}>Join today</Link></p>
+        <p id='create-link'>Don't have an account yet? <Link to={'createUser'}>Join today</Link></p>
       </div>
     </div>
   );
