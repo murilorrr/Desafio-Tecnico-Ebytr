@@ -61,14 +61,10 @@ describe('POST /login', () => {
           .send(loginUser);
       });
 
-      it('retorna o código de status 200 OK', () => {
+      it('retorna um objeto com a propriedade "token" e o código de status 200 OK', () => {
         expect(response).to.have.status(200);
-      });
-
-      it('retorna um objeto com a propriedade "token"', () => {
-        expect(response.body).to.be.a('object');
         expect(response.body).to.have.property('token');
-        expect(response.body.token).to.exist('exist');
+        expect(response.body).to.have.property('token').not.to.be.deep.equal({});
       });
     });
 
@@ -128,7 +124,8 @@ describe('POST /login', () => {
           })
           .end((err, res) => {
             if (err) done(err);
-            expect(res.body).to.be.deep.equal({ code: 401, message: 'Invalid Email' });
+            expect(res.body).to.be.deep.equal({ code: 401, message: '"email" must be a valid email' });
+            done();
           });
       });
 
@@ -137,12 +134,13 @@ describe('POST /login', () => {
           .post('/login')
           .set('content-type', 'application/json')
           .send({
-            email: 'rogerinho@gmail',
+            email: 'rogerinho123@gmail.com',
             password: 'fd2134sa',
           })
           .end((err, res) => {
             if (err) done(err);
-            expect(res.body).to.be.deep.equal({ code: 401, message: 'Incorrect email or password' });
+            expect(res.body).to.be.deep.equal({ code: 401, message: 'Incorrect username or password' });
+            done();
           });
       });
     });
