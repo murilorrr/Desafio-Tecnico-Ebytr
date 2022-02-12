@@ -76,7 +76,7 @@
   box-shadow: 0.2em 1em 4em rgba(78, 78, 78, 0.25);
 }
 
-#create-link {
+#create-link, #login-link {
   margin-left: auto;
   margin-right: auto;
 }
