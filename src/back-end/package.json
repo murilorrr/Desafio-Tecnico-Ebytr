@@ -5,7 +5,7 @@
   "main": "./server/index.js",
   "scripts": {
     "start": "node ./server/server.js",
-    "test": "mocha ./test/*$NAME*.{test,spec}.js --exit",
+    "test": "mocha ./test/*$NAME*.{test,spec}.js -timeout 10000 --exit -", 
     "debug": "nodemon ./server/server.js"
   },
   "repository": {
