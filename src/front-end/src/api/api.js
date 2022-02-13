@@ -75,7 +75,11 @@ async function updateTask(task, token) {
 
 async function tokenValidate(token) {
   // token are a string
-  const response = await api.post('/token', token)
+  const response = await api.post('/token', {}, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': token,
+    }})
     .then((response) => {
       return {data: response.data}
     })
@@ -83,7 +87,7 @@ async function tokenValidate(token) {
       return {error: err.response.data.message};
     });
     return response;
-  // retorn true or false
+  // retorn true or string error
 }
 
 export {
