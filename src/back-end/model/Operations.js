@@ -47,9 +47,22 @@ const getOne = async (collection, email, password) => {
   }
 };
 
+const deleteAll = async (collection) => {
+  try {
+    await connection()
+      .then((db) => db.collection(collection)
+        .deleteMany({}));
+    return true;
+  } catch (error) {
+    console.log('not deleted collection');
+    return error.message;
+  }
+};
+
 module.exports = (collection) => ({
   createOne: (entity) => createOne(collection, entity),
   getAll: () => getAll(collection),
   getOne: (email, password) => getOne(collection, email, password),
   getOneByEmail: (email) => getOneByEmail(collection, email),
+  deleteAll: () => deleteAll(collection),
 });
