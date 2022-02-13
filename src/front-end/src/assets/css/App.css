@@ -47,7 +47,7 @@
 .login-img {
   width: 50%;
   background-position: center;
-  background-image: url(./assets/css/images/mountainImage.jpg);
+  background-image: url(../images/mountainImage.jpg);
 }
 
 .login-form-and-greetings h2 {
