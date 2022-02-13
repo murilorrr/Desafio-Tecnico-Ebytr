@@ -2,9 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser } from "../api/api";
 
+
+const warningVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'visible'}
+const warningNonVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'hidden'}
+
 const LoginUser = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [warning, setWarning] = useState("");
   const [lockButton, setLockButton] = useState(true);
 
   let history = useHistory();
@@ -41,15 +46,17 @@ const LoginUser = () => {
     }
   }, [email, password]);
 
-  async function fetchUserTokenSubmit() {
-    const response = await loginUser({
+  const loginUserFunction = async() => {
+    const { error, data } = await loginUser({
       email: email,
       password: password,
     });
-    if (response !== undefined) {
-      localStorage.setItem("token", JSON.stringify(response));
-      history.push('tasks');
+    if (!error) {
+      localStorage.setItem("token", JSON.stringify(data));
+      history.push("tasks");
+      return;
     }
+    setWarning(error);
     return;
   }
 
@@ -58,6 +65,9 @@ const LoginUser = () => {
       <div className="login-img" />
       <div className="login-form-div">
         <div className="login-form-and-greetings">
+        {
+          <div style={warning===''? warningNonVisibleStyle: warningVisibleStyle}>WARNING: {warning}</div>
+        }
           <p className="greetings">Welcome back</p>
           <h2 className="login-header">Login to your account</h2>
           <div className="login-form">
@@ -94,7 +104,7 @@ const LoginUser = () => {
             type="submit"
             data-testid='submit-button'
             disabled={lockButton}
-            onClick={fetchUserTokenSubmit}
+            onClick={loginUserFunction}
             className="btn submit-button"
           >
             Login now
