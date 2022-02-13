@@ -19,7 +19,7 @@ describe('Teste de verificação dos endpoints usados para logar', () => {
   
   test('testa o endpoint createUser', async () => {
     const response = await createUser(user)
-    expect(response.body)
+    // expect(response.body)
    })
   
   test('testa o endpoint loginUser', () => {  })

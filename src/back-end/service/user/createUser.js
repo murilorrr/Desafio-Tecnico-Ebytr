@@ -4,9 +4,9 @@ const { errorHandler } = require('../../utils/index');
 const User = require('../../model')('User');
 
 const userSchema = Joi.object({
-  name: Joi.string().min(8).required(),
+  name: Joi.string().min(3).required(),
   email: Joi.string().email().required(),
-  password: Joi.string().length(6).required(),
+  password: Joi.string().min(6).required(),
 });
 
 const alreadyExists = async (email) => {

@@ -9,14 +9,18 @@ const api = axios.create({
 async function createUser(user) {
   const response = await api.post('/user', user)
   .then((response) => response.data)
-  .catch((err) => console.log('erro post user', err.message));
+  .catch((err) => {
+    return {error: err.response.data.message};
+  });
   return response;
 }
 
 async function loginUser(user) {
   const token = await api.post('/login', user)
   .then((response) => response.data)
-  .catch((err) => console.log('erro post login', err.message));
+  .catch((err) => {
+    return {error: err.response.data.message};
+  });
   return token;
 }
 
@@ -27,7 +31,9 @@ async function getAllTasks(token) {
       'Authorization': token,
     }})
   .then((response) => response.data)
-  .catch((err) => console.log('erro get all tasks', err.message));
+  .catch((err) => {
+    return {error: err.response.data.message};
+  });
   return response;
 }
 
@@ -38,7 +44,9 @@ async function createTask(task, token) {
       'Authorization': token,
     }})
     .then((response) => response.data)
-    .catch((err) => console.log('erro create task', err.message));
+    .catch((err) => {
+      return {error: err.response.data.message};
+    });
     return response;
 }
 
@@ -49,7 +57,9 @@ async function updateTask(task, token) {
       'Authorization': token,
     }})
     .then((response) => response.data)
-    .catch((err) => console.log('erro update task', err.message));
+    .catch((err) => {
+      return {error: err.response.data.message};
+    });
     return response;
 }
 
