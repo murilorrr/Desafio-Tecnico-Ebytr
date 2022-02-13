@@ -65,6 +65,7 @@ const LoginUser = () => {
               <div className="form-group">
                 <label htmlFor="InputEmail">Email</label>
                 <input
+                  data-testid='input-Email'
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -77,6 +78,7 @@ const LoginUser = () => {
               <div className="form-group">
                 <label htmlFor="InputPassword">Password</label>
                 <input
+                  data-testid='input-Password'
                   type="password"
                   name="password"
                   onChange={handleChange}
@@ -90,6 +92,7 @@ const LoginUser = () => {
           </div>
           <button
             type="submit"
+            data-testid='submit-button'
             disabled={lockButton}
             onClick={fetchUserTokenSubmit}
             className="btn submit-button"
