@@ -73,10 +73,24 @@ async function updateTask(task, token) {
     return response;
 }
 
+async function tokenValidate(token) {
+  // token are a string
+  const response = await api.post('/token', token)
+    .then((response) => {
+      return {data: response.data}
+    })
+    .catch((err) => {
+      return {error: err.response.data.message};
+    });
+    return response;
+  // retorn true or false
+}
+
 export {
   createUser,
   loginUser,
   getAllTasks,
   createTask,
   updateTask,
+  tokenValidate,
 };
