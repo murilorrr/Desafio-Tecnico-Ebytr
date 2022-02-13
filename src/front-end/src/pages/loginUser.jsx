@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { loginUser } from "../api/api";
+import { loginUser, tokenValidate } from "../api/api";
 
 
 const warningVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'visible'}
@@ -20,13 +20,22 @@ const LoginUser = () => {
     if (name === "password") return setPassword(value);
   };
 
+  const validateToken = async (token) => {
+    const { error } = await tokenValidate({
+      token: token
+    });
+    if (error) {
+      setWarning(error);
+      return false;
+    }
+    return true;
+  }
+
   useEffect(() => {
     const token = localStorage.getItem("token") || undefined;
     if (token) {
-      // validate token
-      // if valid history.push('/tasks')
-      history.push('tasks');
-      // else clear localStorage
+      const tokenValid = validateToken(token);
+      tokenValid ? history.push('tasks'): localStorage.clear();
     }
   }, [history]);
 
