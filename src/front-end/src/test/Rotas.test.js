@@ -11,9 +11,11 @@ import '@testing-library/jest-dom';
 
 describe('1 - Teste de Rotas', () => {
   let history;
+
   beforeEach(() => {
     history = createMemoryHistory();
   });
+
   test('Rota /', () => {
     render(
       <Router history={ history }>
@@ -22,6 +24,26 @@ describe('1 - Teste de Rotas', () => {
     );
     history.push('/');
     expect(screen.getByText(/Welcome back/i)).toBeInTheDocument();
+  });
+
+  test('Rota /createUser', () => {
+    render(
+      <Router history={ history }>
+        <App />
+      </Router>,
+    );
+    history.push('/createUser');
+    expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
+  });
+  
+  test('Rota /tasks', () => {
+    render(
+      <Router history={ history }>
+        <App />
+      </Router>,
+    );
+    history.push('/');
+    expect(screen.getByText(/Hello/i)).toBeInTheDocument();
   });
   // test('Rota /, quando a rota for "/"', () => {
   //   history.push('/');
