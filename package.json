@@ -20,5 +20,12 @@
   "bugs": {
     "url": "https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/issues"
   },
-  "homepage": "https://github.com/murilorsv14/Desafio-Tecnico-Ebytr#readme"
+  "homepage": "https://github.com/murilorsv14/Desafio-Tecnico-Ebytr#readme",
+  "dependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0"
+  },
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
 }
