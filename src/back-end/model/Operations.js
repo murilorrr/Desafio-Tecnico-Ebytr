@@ -16,8 +16,7 @@ const getOneByEmail = async (collection, email) => {
   try {
     const result = await connection()
       .then((db) => db.collection(collection)
-        .find({ email })
-        .toArray());
+        .find({ email }).toArray());
     return result.length > 0 ? result : null;
   } catch (error) {
     return error.message;
@@ -49,9 +48,7 @@ const getOne = async (collection, email, password) => {
 
 const deleteAll = async (collection) => {
   try {
-    await connection()
-      .then((db) => db.collection(collection)
-        .deleteMany({}));
+    await connection().then((db) => db.collection(collection).deleteMany({}));
     return true;
   } catch (error) {
     console.log('not deleted collection');

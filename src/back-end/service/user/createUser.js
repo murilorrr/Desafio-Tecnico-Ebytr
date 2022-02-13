@@ -20,7 +20,7 @@ module.exports = async (user) => {
   if (error) throw errorHandler(StatusCodes.BAD_REQUEST, error.message);
 
   const exists = await alreadyExists(email);
-  if (exists) throw errorHandler(StatusCodes.CONFLICT, 'User already registered');
+  if (exists) { throw errorHandler(StatusCodes.CONFLICT, 'User already registered'); }
 
   // const token = generateJwt(user); // ToDo
 

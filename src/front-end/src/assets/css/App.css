@@ -3,7 +3,7 @@
   border: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow:hidden;
+  overflow: hidden;
 }
 
 .form-group {
@@ -67,17 +67,18 @@
 }
 
 .submit-button {
-  background-color:#04C35C;
+  background-color: #04c35c;
   color: white;
   border-color: rgb(177, 177, 177);
 }
 
-.submit-button:focus, .form-control:focus {
+.submit-button:focus,
+.form-control:focus {
   box-shadow: 0.2em 1em 4em rgba(78, 78, 78, 0.25);
 }
 
-#create-link, #login-link {
+#create-link,
+#login-link {
   margin-left: auto;
   margin-right: auto;
 }
-

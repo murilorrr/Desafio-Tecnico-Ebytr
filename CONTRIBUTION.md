@@ -9,10 +9,10 @@ Contributions, issues and feature requests are very welcome.
 ## Docker
 
 If you have docker installed, you can run with:
+
 ```sh
 docker-compose up
 ```
-
 
 ## Pre-requisites
 

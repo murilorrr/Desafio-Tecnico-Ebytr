@@ -2,8 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createUser, loginUser } from "../api/api";
 
-const warningVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'visible'}
-const warningNonVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'hidden'}
+const warningVisibleStyle = {
+  backgroundColor: "red",
+  position: "absolute",
+  top: 0,
+  visibility: "visible",
+};
+const warningNonVisibleStyle = {
+  backgroundColor: "red",
+  position: "absolute",
+  top: 0,
+  visibility: "hidden",
+};
 
 const CreateUser = () => {
   const [password, setPassword] = useState("");
@@ -40,15 +50,19 @@ const CreateUser = () => {
   }, [email, password, name]);
 
   const createUserFunction = async () => {
-    const { error } = await createUser({ email: email, password: password, name: name });
+    const { error } = await createUser({
+      email: email,
+      password: password,
+      name: name,
+    });
     if (error) {
       setWarning(error);
-      return false
-    };
+      return false;
+    }
     return true;
-  }
+  };
 
-  const loginUserFunction = async() => {
+  const loginUserFunction = async () => {
     const { error, data } = await loginUser({
       email: email,
       password: password,
@@ -60,7 +74,7 @@ const CreateUser = () => {
     }
     setWarning(error);
     return;
-  }
+  };
 
   async function createUserSubmitButton() {
     const created = await createUserFunction();
@@ -74,7 +88,13 @@ const CreateUser = () => {
       <div className="login-form-div">
         <div className="login-form-and-greetings">
           {
-            <div style={warning===''? warningNonVisibleStyle: warningVisibleStyle}>WARNING: {warning}</div>
+            <div
+              style={
+                warning === "" ? warningNonVisibleStyle : warningVisibleStyle
+              }
+            >
+              WARNING: {warning}
+            </div>
           }
           <p className="greetings">Welcome</p>
           <h2 className="login-header">Create your account</h2>

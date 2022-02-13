@@ -2,9 +2,18 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser, tokenValidate } from "../api/api";
 
-
-const warningVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'visible'}
-const warningNonVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'hidden'}
+const warningVisibleStyle = {
+  backgroundColor: "red",
+  position: "absolute",
+  top: 0,
+  visibility: "visible",
+};
+const warningNonVisibleStyle = {
+  backgroundColor: "red",
+  position: "absolute",
+  top: 0,
+  visibility: "hidden",
+};
 
 const LoginUser = () => {
   const [password, setPassword] = useState("");
@@ -26,21 +35,16 @@ const LoginUser = () => {
       return false;
     }
     return true;
-  }
+  };
 
-  const memoizedCallback = useCallback(
-    async () => {
-      const token = localStorage.getItem("token") || undefined;
-      const tokenIsValid = await validateToken(token);
-      tokenIsValid ? history.push('tasks'): localStorage.clear();
-    },
-    [history],
-  );
+  const memoizedCallback = useCallback(async () => {
+    const token = localStorage.getItem("token") || undefined;
+    const tokenIsValid = await validateToken(token);
+    tokenIsValid ? history.push("tasks") : localStorage.clear();
+  }, [history]);
 
   useEffect(() => {
-    
     memoizedCallback();
-
   }, [memoizedCallback]);
 
   const validateLogin = (email, password) => {
@@ -59,7 +63,7 @@ const LoginUser = () => {
     }
   }, [email, password]);
 
-  const loginUserFunction = async() => {
+  const loginUserFunction = async () => {
     const { error, data } = await loginUser({
       email: email,
       password: password,
@@ -71,16 +75,22 @@ const LoginUser = () => {
     }
     setWarning(error);
     return;
-  }
+  };
 
   return (
     <div className="wrapper">
       <div className="login-img" />
       <div className="login-form-div">
         <div className="login-form-and-greetings">
-        {
-          <div style={warning===''? warningNonVisibleStyle: warningVisibleStyle}>WARNING: {warning}</div>
-        }
+          {
+            <div
+              style={
+                warning === "" ? warningNonVisibleStyle : warningVisibleStyle
+              }
+            >
+              WARNING: {warning}
+            </div>
+          }
           <p className="greetings">Welcome back</p>
           <h2 className="login-header">Login to your account</h2>
           <div className="login-form">
@@ -88,7 +98,7 @@ const LoginUser = () => {
               <div className="form-group">
                 <label htmlFor="InputEmail">Email</label>
                 <input
-                  data-testid='input-Email'
+                  data-testid="input-Email"
                   type="email"
                   name="email"
                   onChange={handleChange}
@@ -101,7 +111,7 @@ const LoginUser = () => {
               <div className="form-group">
                 <label htmlFor="InputPassword">Password</label>
                 <input
-                  data-testid='input-Password'
+                  data-testid="input-Password"
                   type="password"
                   name="password"
                   onChange={handleChange}
@@ -115,7 +125,7 @@ const LoginUser = () => {
           </div>
           <button
             type="submit"
-            data-testid='submit-button'
+            data-testid="submit-button"
             disabled={lockButton}
             onClick={loginUserFunction}
             className="btn submit-button"

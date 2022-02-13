@@ -1,7 +1,7 @@
-import React from 'react';
-import './assets/css/App.css';
-import { Route, Switch } from 'react-router-dom';
-import { CreateUser, LoginUser } from './pages'
+import React from "react";
+import "./assets/css/App.css";
+import { Route, Switch } from "react-router-dom";
+import { CreateUser, LoginUser } from "./pages";
 
 function App() {
   return (

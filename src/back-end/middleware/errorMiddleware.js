@@ -4,7 +4,9 @@ const errorMiddleware = (err, req, res, next) => {
     return res.status(err.code).json(err);
   }
 
-  return res.status(500).json({ message: 'Internal Server Error' }) || next(err);
+  return (
+    res.status(500).json({ message: 'Internal Server Error' }) || next(err)
+  );
 };
 
 module.exports = errorMiddleware;
