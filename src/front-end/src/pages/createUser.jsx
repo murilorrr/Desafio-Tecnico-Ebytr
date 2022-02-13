@@ -2,10 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { createUser, loginUser } from "../api/api";
 
+const warningVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'visible'}
+const warningNonVisibleStyle = {backgroundColor: "red", position: "absolute", top: 0, visibility: 'hidden'}
+
 const CreateUser = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [warning, setWarning] = useState("");
   const [lockButton, setLockButton] = useState(true);
 
   let history = useHistory();
@@ -35,27 +39,43 @@ const CreateUser = () => {
     }
   }, [email, password, name]);
 
-  async function createUserSubmitButton() {
+  const createUserFunction = async () => {
     const { error } = await createUser({ email: email, password: password, name: name });
-    console.log(error, 'resposta created');
-    if (error) return;
-    const response = await loginUser({
+    if (error) {
+      setWarning(error);
+      return false
+    };
+    return true;
+  }
+
+  const loginUserFunction = async() => {
+    const { error, data } = await loginUser({
       email: email,
       password: password,
     });
-    if (response !== undefined) {
-      localStorage.setItem("token", JSON.stringify(response));
+    if (!error) {
+      localStorage.setItem("token", JSON.stringify(data));
       history.push("tasks");
+      return;
     }
+    setWarning(error);
     return;
   }
 
+  async function createUserSubmitButton() {
+    const created = await createUserFunction();
+    if (!created) return;
+    await loginUserFunction();
+  }
+
   return (
-    
     <div className="wrapper">
       <div className="login-img" />
       <div className="login-form-div">
         <div className="login-form-and-greetings">
+          {
+            <div style={warning===''? warningNonVisibleStyle: warningVisibleStyle}>WARNING: {warning}</div>
+          }
           <p className="greetings">Welcome</p>
           <h2 className="login-header">Create your account</h2>
           <div className="login-form">

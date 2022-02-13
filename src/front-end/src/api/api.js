@@ -8,7 +8,9 @@ const api = axios.create({
 
 async function createUser(user) {
   const response = await api.post('/user', user)
-  .then((response) => response.data)
+  .then((response) => {
+    return {data: response.data}
+  })
   .catch((err) => {
     return {error: err.response.data.message};
   });
@@ -17,9 +19,11 @@ async function createUser(user) {
 
 async function loginUser(user) {
   const token = await api.post('/login', user)
-  .then((response) => response.data)
+  .then((response) => {
+    return {data: response.data}
+  })
   .catch((err) => {
-    return {error: err.response.data.message};
+    return { error: err.response.data.message };
   });
   return token;
 }
@@ -30,7 +34,9 @@ async function getAllTasks(token) {
       'Content-Type': 'application/json',
       'Authorization': token,
     }})
-  .then((response) => response.data)
+  .then((response) => {
+    return {data: response.data}
+  })
   .catch((err) => {
     return {error: err.response.data.message};
   });
@@ -43,7 +49,9 @@ async function createTask(task, token) {
       'Content-Type': 'application/json',
       'Authorization': token,
     }})
-    .then((response) => response.data)
+    .then((response) => {
+      return {data: response.data}
+    })
     .catch((err) => {
       return {error: err.response.data.message};
     });
@@ -56,7 +64,9 @@ async function updateTask(task, token) {
       'Content-Type': 'application/json',
       'Authorization': token,
     }})
-    .then((response) => response.data)
+    .then((response) => {
+      return {data: response.data}
+    })
     .catch((err) => {
       return {error: err.response.data.message};
     });
