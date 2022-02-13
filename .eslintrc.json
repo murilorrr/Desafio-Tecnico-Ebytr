@@ -6,8 +6,13 @@
     "plugin:prettier/recommended"
   ],
   "env": {
-    "es6": true,
-    "node": true
+    "browser": true,
+    "commonjs": true,
+    "es2021": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
   },
   "rules": {
     "prettier/prettier": [
