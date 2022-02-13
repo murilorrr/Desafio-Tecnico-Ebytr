@@ -2,9 +2,10 @@ const { StatusCodes } = require('http-status-codes');
 const tokenService = require('../../service/token');
 
 const validate = async (req, res, next) => {
-  const token = req.body;
+  const { authorization } = req.headers;
+  console.log(authorization);
   try {
-    const result = await tokenService.validate(token);
+    const result = tokenService.validate(authorization);
     return res.status(StatusCodes.OK).json(result);
   } catch (error) {
     return next(error);
