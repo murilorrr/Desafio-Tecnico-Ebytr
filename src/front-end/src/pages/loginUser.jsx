@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const loginUser = () => {
+const LoginUser = () => {
+  useEffect(() => {
+    getToken();
+  }, []);
+  const getToken = () => {
+    return {};
+  }
   return (
     <div className='wrapper'>
       <div className='login-img' />
@@ -11,17 +17,17 @@ const loginUser = () => {
           <h2 className='login-header'>Login to your account</h2>
           <div className='login-form'>
             <form >
-              <div class="form-group">
-                <label for="InputEmail">Email</label>
-                <input type="email" class="form-control" id="InputEmail" placeholder="Enter email" />
+              <div className="form-group">
+                <label htmlFor="InputEmail">Email</label>
+                <input type="email" className="form-control" id="InputEmail" placeholder="Enter email" />
               </div>
-              <div class="form-group">
-                <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="InputPassword" placeholder="Enter Password" />
+              <div className="form-group">
+                <label htmlFor="InputPassword">Password</label>
+                <input type="password" className="form-control" id="InputPassword" placeholder="Enter Password" />
               </div>
             </form>
           </div>
-          <button type="submit" class="btn submit-button">Login now</button>
+          <button type="submit" className="btn submit-button">Login now</button>
         </div>
         <p id='create-link'>Don't have an account yet? <Link to={'createUser'}>Join today</Link></p>
       </div>
@@ -29,4 +35,4 @@ const loginUser = () => {
   );
 }
 
-export default loginUser;
+export default LoginUser;
