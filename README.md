@@ -38,7 +38,7 @@ At Ebytr the development team uses Stack MERN to create their applications. It h
 
 and much more...
 
-## Getting started
+## 🏃 Getting started
 
 ### Pre-requisites
 
