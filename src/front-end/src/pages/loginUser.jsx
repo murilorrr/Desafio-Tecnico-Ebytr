@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { loginUser, tokenValidate } from "../api/api";
 
@@ -20,24 +20,28 @@ const LoginUser = () => {
     if (name === "password") return setPassword(value);
   };
 
-  const validateToken = async (token) => {
-    const { error } = await tokenValidate({
-      token: token
-    });
+  const validateToken = async (string) => {
+    const { error } = await tokenValidate(string);
     if (error) {
-      setWarning(error);
       return false;
     }
     return true;
   }
 
+  const memoizedCallback = useCallback(
+    async () => {
+      const token = localStorage.getItem("token") || undefined;
+      const tokenIsValid = await validateToken(token);
+      tokenIsValid ? history.push('tasks'): localStorage.clear();
+    },
+    [history],
+  );
+
   useEffect(() => {
-    const token = localStorage.getItem("token") || undefined;
-    if (token) {
-      const tokenValid = validateToken(token);
-      tokenValid ? history.push('tasks'): localStorage.clear();
-    }
-  }, [history]);
+    
+    memoizedCallback();
+
+  }, [memoizedCallback]);
 
   const validateLogin = (email, password) => {
     const minPasswordLength = 6;
@@ -61,7 +65,7 @@ const LoginUser = () => {
       password: password,
     });
     if (!error) {
-      localStorage.setItem("token", JSON.stringify(data));
+      localStorage.setItem("token", data.token);
       history.push("tasks");
       return;
     }

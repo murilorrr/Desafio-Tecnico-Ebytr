@@ -6,8 +6,7 @@ const jwt = require('jsonwebtoken');
 const secret = process.env.SECRET || 'segredinho';
 const { errorHandler } = require('../../utils');
 
-const validate = async (token) => {
-  if (!token) throw errorHandler(status.UNAUTHORIZED, 'Cade o token');
+const validate = (token) => {
   try {
     const result = jwt.verify(token, secret);
     return !!result;
