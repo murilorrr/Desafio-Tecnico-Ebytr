@@ -3,7 +3,7 @@ require('dotenv').config();
 const status = require('http-status-codes').StatusCodes;
 const jwt = require('jsonwebtoken');
 
-const secret = process.env.SECRET || 'segredinho';
+const secret = process.env.SECRET;
 const { errorHandler } = require('../../utils');
 
 const validate = (token) => {

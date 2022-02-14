@@ -6,7 +6,7 @@ const status = require('http-status-codes').StatusCodes;
 const jwt = require('jsonwebtoken');
 const User = require('../../model/Operations')('User');
 
-const secret = process.env.SECRET || 'segredinho';
+const secret = process.env.SECRET;
 const { errorHandler } = require('../../utils');
 
 const JWTConfig = {
