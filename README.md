@@ -1,4 +1,8 @@
-# Desafio-Tecnico-Ebytr
+# Desafio-Tecnico-Ebytr Monorepo
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/context:javascript)
+
+
 
 ![Imagem preview](https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/projectReact.svg?raw=true)
 
