@@ -51,13 +51,31 @@ http://localhost:3000
 
 We decided to follow some MSC to guide our backend architecture. Here is a quick glance of what we expect when of new contributions in the backend project. How we organize our project:
 
-- `src`: source of all project;
-  - `controller`: is the layer that takes care of http requests to the server;
-  - `service`: is the layer that takes care of the application's business rules, it intermediates the information coming from the route to the model;
-  - `model`: is the layer that governs all the database, connections and queries;
-  - `middleware`: is a type of controller, but can be reused for authentication or error handling functions for example;
-  - `routes`: this layer will tell which endpoint will operate for each controller;
-  - `server`: here our server is instantiated and identifies the routes and entities;
-  - `test`: this layer makes everything, including coffee;
+- `/back-end/src`: Source of all back-end;
+  - `controller`: Is the layer that takes care of http requests to the server;
+  - `service`: Is the layer that takes care of the application's business rules, it intermediates the information coming from the route to the model;
+  - `model`: Is the layer that governs all the database, connections and queries;
+  - `middleware`: Is a type of controller, but can be reused for authentication or error handling functions for example;
+  - `routes`: This layer will tell which endpoint will operate for each controller;
+  - `server`: Here our server is instantiated and identifies the routes and entities;
+  - `test`: This layer makes everything, including coffee;
+
+### Frontend Architecture
+
+
+ - `public`: This layer has all the static files of the system made available by http;
+ - `src`: Source of all front-end code;
+   - `api`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `app`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `assets`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `components`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `pages`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `test`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+   - `utils`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
+ 
+
+
+> This project has integration with LGTM automated code review
+
 
 Thanks ❤️
