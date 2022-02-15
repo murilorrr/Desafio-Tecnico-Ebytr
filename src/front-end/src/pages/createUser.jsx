@@ -45,6 +45,9 @@ const CreateUser = () => {
     })
     if (error) {
       setWarning(error)
+      setTimeout(() => {
+        setWarning('')
+      }, 3000)
       return false
     }
     return true
