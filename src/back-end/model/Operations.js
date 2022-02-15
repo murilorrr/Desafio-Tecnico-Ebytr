@@ -46,6 +46,17 @@ const getOne = async (collection, email, password) => {
   }
 };
 
+const getOneTask = async (collection, title, body) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection)
+        .findOne({ title, body }));
+    return result || null;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 const deleteAll = async (collection) => {
   try {
     await connection().then((db) => db.collection(collection).deleteMany({}));
@@ -103,4 +114,5 @@ module.exports = (collection) => ({
   updateOne: (entity, entityId) => updateOne(collection, entity, entityId),
   deleteOne: (entityId) => deleteOne(collection, entityId),
   getById: (id) => getById(collection, id),
+  getOneTask: (title, body) => getOneTask(collection, title, body),
 });
