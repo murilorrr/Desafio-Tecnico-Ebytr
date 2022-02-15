@@ -66,6 +66,7 @@ describe('POST /user', () => {
 
       it('tem a propriedade _id do mongoDB', () => {
         expect(response.body.user).have.a.property('_id');
+        expect(response.body.user).have.a.property('_id').have.length.greaterThanOrEqual(1);
       });
     });
 
