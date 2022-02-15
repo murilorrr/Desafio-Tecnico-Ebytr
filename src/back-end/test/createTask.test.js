@@ -16,7 +16,6 @@ const { MongoClient } = require('mongodb');
 //
 
 const server = require('../server/app');
-const { token } = require('../routes');
 
 const user = {
   name: 'Rogerinho',
@@ -70,7 +69,7 @@ describe('POST /tasks', () => {
         token = loginResponse.body.token;
 
         response = await chai.request(server)
-        .post('/tasks')
+        .post('/task')
         .set(
           {
             'content-type': 'application/json',
@@ -126,7 +125,7 @@ describe('POST /tasks', () => {
       describe('Quando há problema com o token:', () => {
         it('Verifica se o token é valido', (done) => {
           response = chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
@@ -145,7 +144,7 @@ describe('POST /tasks', () => {
         });
         it('Verifica se o token existe', (done) => {
           response = chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
@@ -167,7 +166,7 @@ describe('POST /tasks', () => {
         
         it('É retornado status 400 Bad Request', async () => {
           response = await chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
@@ -183,7 +182,7 @@ describe('POST /tasks', () => {
 
         it('É necessario um objeto com atributo title', (done) => {
           response = chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
@@ -202,7 +201,7 @@ describe('POST /tasks', () => {
 
         it('É necessario um objeto com atributo body', (done) => {
           response = chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
@@ -221,7 +220,7 @@ describe('POST /tasks', () => {
 
         it('É necessario um objeto com atributo status', (done) => {
           response = chai.request(server)
-            .post('/tasks')
+            .post('/task')
             .set(
               {
                 'content-type': 'application/json',
