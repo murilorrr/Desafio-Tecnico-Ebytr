@@ -6,7 +6,7 @@ const Task = require('../../model')('Task');
 const taskSchema = Joi.object({
   title: Joi.string().required(),
   body: Joi.string().required(),
-  status: Joi.string().required(),
+  status: Joi.string().required().valid('pendente', 'em andamento', 'pronto'),
   userId: Joi.string().required(),
 });
 

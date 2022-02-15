@@ -1,4 +1,4 @@
-// const { ObjectId } = require('mongodb');
+const { ObjectId } = require('mongodb');
 const connection = require('./connection');
 
 const createOne = async (collection, entity) => {
@@ -56,10 +56,41 @@ const deleteAll = async (collection) => {
   }
 };
 
+const deleteOne = async (collection, id) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection)
+        .findOneAndDelete(
+          { _id: ObjectId(id) },
+          { returnOriginal: 'after' },
+        ));
+    return result.value || null;
+  } catch (error) {
+    return error.message;
+  }
+};
+
+const updateOne = async (collection, entity, id) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection)
+        .findOneAndUpdate(
+          { _id: ObjectId(id) },
+          { $set: entity },
+          { returnDocument: 'after' },
+        ));
+    return result.value || null;
+  } catch (error) {
+    return error.message;
+  }
+};
+
 module.exports = (collection) => ({
   createOne: (entity) => createOne(collection, entity),
   getAll: () => getAll(collection),
   getOne: (email, password) => getOne(collection, email, password),
   getOneByEmail: (email) => getOneByEmail(collection, email),
   deleteAll: () => deleteAll(collection),
+  updateOne: (entity, userId) => updateOne(collection, entity, userId),
+  deleteOne: (userId) => deleteOne(collection, userId),
 });
