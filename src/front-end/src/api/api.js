@@ -32,7 +32,7 @@ async function loginUser (user) {
 
 async function getAllTasks (token) {
   const response = await api
-    .get('/tasks', {
+    .get('/task', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
@@ -49,7 +49,7 @@ async function getAllTasks (token) {
 
 async function createTask (task, token) {
   const response = await api
-    .post('/tasks', task, {
+    .post('/task', task, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
@@ -64,9 +64,26 @@ async function createTask (task, token) {
   return response
 }
 
-async function updateTask (task, token) {
+async function updateTask (task, token, id) {
   const response = await api
-    .put('/tasks', task, {
+    .put(`/task/${id}`, task, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: token
+      }
+    })
+    .then((response) => {
+      return { data: response.data }
+    })
+    .catch((err) => {
+      return { error: err.response.data.message }
+    })
+  return response
+}
+
+async function deleteTask (token, id) {
+  const response = await api
+    .delete(`/task/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
@@ -110,5 +127,6 @@ export {
   getAllTasks,
   createTask,
   updateTask,
-  tokenValidate
+  tokenValidate,
+  deleteTask,
 }
