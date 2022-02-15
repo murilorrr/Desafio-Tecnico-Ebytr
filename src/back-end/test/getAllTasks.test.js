@@ -94,7 +94,7 @@ describe('GET /task', () => {
       it('Retorna o código de status 200 OK com uma lista de Tarefas', () => {
         expect(response).to.have.status(201);
 
-        expect(response.body).to.have.property('task');
+        expect(response.body).to.have.property('tasks');
         
         expect(response.body.task).to.be.a('array');
         expect(response.body.task[0].title).to.be.equal('Fake Task');
