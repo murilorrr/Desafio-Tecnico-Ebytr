@@ -34,7 +34,7 @@ const task = {
   status: 'pendente',
 }
 
-describe('GET /task', () => {
+describe.only('GET /task', () => {
   describe('É esperado ao buscar a lista de tarefa:', () => {
     let response;
     let connection;
@@ -92,19 +92,19 @@ describe('GET /task', () => {
       });
 
       it('Retorna o código de status 200 OK com uma lista de Tarefas', () => {
-        expect(response).to.have.status(201);
+        expect(response).to.have.status(200);
 
         expect(response.body).to.have.property('tasks');
         
-        expect(response.body.task).to.be.a('array');
-        expect(response.body.task[0].title).to.be.equal('Fake Task');
-        expect(response.body.task[0].body).to.be.equal('Fake Body');
-        expect(response.body.task[0].status).to.be.equal('pendente');
+        expect(response.body.tasks).to.be.a('array');
+        expect(response.body.tasks[0].title).to.be.equal('Fake Task');
+        expect(response.body.tasks[0].body).to.be.equal('Fake Body');
+        expect(response.body.tasks[0].status).to.be.equal('pendente');
       });
 
       it('tem a propriedade _id do mongoDB', () => {
-        expect(response.body.task[0]).have.a.property('_id');
-        expect(response.body.task[0]).have.a.property('_id').have.length.greaterThanOrEqual(1);
+        expect(response.body.tasks[0]).have.a.property('_id');
+        expect(response.body.tasks[0]).have.a.property('_id').have.length.greaterThanOrEqual(1);
       });
     });
 
@@ -141,7 +141,7 @@ describe('GET /task', () => {
 
       describe('Quando há problema com o token:', () => {
         it('Verifica se o token é valido', (done) => {
-          response = await chai.request(server)
+          response = chai.request(server)
             .get('/task')
             .set(
               {
@@ -155,11 +155,11 @@ describe('GET /task', () => {
             });
         });
         it('Verifica se o token existe', (done) => {
-          response = await chai.request(server)
+          response = chai.request(server)
             .get('/task')
             .end((err, res) => {
               if (err) done(err);
-              expect(res.body).to.be.deep.equal({ code: 401, message: '"token" is not valid' });
+              expect(res.body).to.be.deep.equal({ code: 401, message: '"token" is required' });
               done();
             });
         });
