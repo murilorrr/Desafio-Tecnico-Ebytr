@@ -61,7 +61,6 @@ const deleteOne = async (collection, id) => {
       .then((db) => db.collection(collection)
         .findOneAndDelete(
           { _id: ObjectId(id) },
-          { returnOriginal: 'after' },
         ));
     return result.value || null;
   } catch (error) {
@@ -102,6 +101,6 @@ module.exports = (collection) => ({
   getOneByEmail: (email) => getOneByEmail(collection, email),
   deleteAll: () => deleteAll(collection),
   updateOne: (entity, entityId) => updateOne(collection, entity, entityId),
-  deleteOne: (userId) => deleteOne(collection, userId),
+  deleteOne: (entityId) => deleteOne(collection, entityId),
   getById: (id) => getById(collection, id),
 });

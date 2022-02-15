@@ -11,7 +11,6 @@ module.exports = async (userId) => {
       }
       return task;
     });
-    console.log(listTasks, 'LISTA DE TAREFAS');
     return { tasks: listTasks };
   } catch (err) {
     return err.message;
