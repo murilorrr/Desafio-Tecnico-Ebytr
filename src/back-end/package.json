@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./server/server.js",
     "test": "mocha ./test/*$NAME*.{test,spec}.js -timeout 10000 --exit -",
+    "coverage": "nyc mocha",
     "debug": "nodemon ./server/server.js"
   },
   "repository": {
@@ -33,7 +34,8 @@
     "jest": "^27.5.1",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^4.3.1"
+    "mongodb": "^4.3.1",
+    "nyc": "^15.1.0"
   },
   "devDependencies": {
     "chai": "4.3.4",
