@@ -60,7 +60,7 @@ describe.only('PUT /task/:id', () => {
       MongoClient.connect.restore();
     });
 
-    describe('Quando é atualizado com sucesso', () => {
+    describe.only('Quando é atualizado com sucesso', () => {
       let id;
       beforeEach(async () => {
         await chai.request(server)
@@ -83,8 +83,8 @@ describe.only('PUT /task/:id', () => {
             'authorization': token,
           })
         .send(task);
-
-        id = taskPost.response.body._id;
+        
+        id = taskPost.body.task._id;
 
         response = await chai.request(server)
         .put(`/task/${id}`)

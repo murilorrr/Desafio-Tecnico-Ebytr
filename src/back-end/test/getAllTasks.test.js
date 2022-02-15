@@ -34,7 +34,7 @@ const task = {
   status: 'pendente',
 }
 
-describe.only('GET /task', () => {
+describe('GET /task', () => {
   describe('É esperado ao buscar a lista de tarefa:', () => {
     let response;
     let connection;
