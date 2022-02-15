@@ -8,4 +8,6 @@ router.post('/', authMiddleware, taskController.create);
 
 router.get('/', authMiddleware, taskController.getAll);
 
+router.put('/:id', authMiddleware, taskController.updateOne);
+
 module.exports = router;

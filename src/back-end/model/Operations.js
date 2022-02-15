@@ -51,7 +51,6 @@ const deleteAll = async (collection) => {
     await connection().then((db) => db.collection(collection).deleteMany({}));
     return true;
   } catch (error) {
-    console.log('not deleted collection');
     return error.message;
   }
 };
@@ -74,12 +73,12 @@ const updateOne = async (collection, entity, id) => {
   try {
     const result = await connection()
       .then((db) => db.collection(collection)
-        .findOneAndUpdate(
+        .updateOne(
           { _id: ObjectId(id) },
           { $set: entity },
           { returnDocument: 'after' },
         ));
-    return result.value || null;
+    return result.modifiedCount || null;
   } catch (error) {
     return error.message;
   }
@@ -102,7 +101,7 @@ module.exports = (collection) => ({
   getOne: (email, password) => getOne(collection, email, password),
   getOneByEmail: (email) => getOneByEmail(collection, email),
   deleteAll: () => deleteAll(collection),
-  updateOne: (entity, userId) => updateOne(collection, entity, userId),
+  updateOne: (entity, entityId) => updateOne(collection, entity, entityId),
   deleteOne: (userId) => deleteOne(collection, userId),
   getById: (id) => getById(collection, id),
 });
