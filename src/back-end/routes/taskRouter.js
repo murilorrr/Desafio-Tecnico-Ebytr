@@ -10,4 +10,6 @@ router.get('/', authMiddleware, taskController.getAll);
 
 router.put('/:id', authMiddleware, taskController.updateOne);
 
+router.delete('/:id', authMiddleware, taskController.deleteOne);
+
 module.exports = router;
