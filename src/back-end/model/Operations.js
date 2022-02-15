@@ -26,9 +26,9 @@ const getOneByEmail = async (collection, email) => {
 const getAll = async (collection) => {
   try {
     const result = await connection()
-      .then((db) => db.collection(collection))
-      .find({})
-      .toArray();
+      .then((db) => db.collection(collection)
+        .find({})
+        .toArray());
     return result || null;
   } catch (error) {
     return error.message;

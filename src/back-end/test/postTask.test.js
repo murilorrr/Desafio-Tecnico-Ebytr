@@ -34,7 +34,7 @@ const task = {
   status: 'pendente',
 }
 
-describe('POST /tasks', () => {
+describe('POST /task', () => {
   describe('É esperado ao se cadastrar uma tarefa:', () => {
     let response;
     let connection;
