@@ -1,19 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { loginUser, tokenValidate } from '../api/api'
-
-const warningVisibleStyle = {
-  backgroundColor: 'red',
-  position: 'absolute',
-  top: 0,
-  visibility: 'visible'
-}
-const warningNonVisibleStyle = {
-  backgroundColor: 'red',
-  position: 'absolute',
-  top: 0,
-  visibility: 'hidden'
-}
+import Warning from '../components/warning'
 
 const LoginUser = () => {
   const [password, setPassword] = useState('')
@@ -81,13 +69,7 @@ const LoginUser = () => {
       <div className='login-img' />
       <div className='login-form-div'>
         <div className='login-form-and-greetings'>
-          <div
-            style={
-                warning === '' ? warningNonVisibleStyle : warningVisibleStyle
-              }
-          >
-            WARNING: {warning}
-          </div>
+          <Warning warning={warning}/>
           <p className='greetings'>Welcome back</p>
           <h2 className='login-header'>Login to your account</h2>
           <div className='login-form'>
