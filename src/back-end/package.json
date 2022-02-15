@@ -5,8 +5,8 @@
   "main": "./server/index.js",
   "scripts": {
     "start": "node ./server/server.js",
-    "test": "mocha ./test/*$NAME*.{test,spec}.js -timeout 10000 --exit -",
-    "coverage": "nyc mocha",
+    "test": "mocha ./test/*$NAME*.{test,spec}.js -timeout 10000 --exit",
+    "coverage": "nyc --reporter=text mocha --exit",
     "debug": "nodemon ./server/server.js"
   },
   "repository": {
