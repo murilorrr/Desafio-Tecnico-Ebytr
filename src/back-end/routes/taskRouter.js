@@ -6,4 +6,6 @@ const router = new Router();
 
 router.post('/', authMiddleware, taskController.create);
 
+router.get('/', authMiddleware, taskController.getAll);
+
 module.exports = router;
