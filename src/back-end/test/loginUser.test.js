@@ -64,11 +64,13 @@ describe('POST /login', () => {
         await db.collection('User').deleteMany({});
       });
 
-      it.only('retorna um objeto com a propriedade "token" e o código de status 200 OK', () => {
+      it('retorna um objeto com a propriedade "token" e o código de status 200 OK', () => {
+
         expect(response).to.have.status(200);
         expect(response.body).to.have.property('token');
         expect(response.body).to.have.property('token').to.be.a('string');
         expect(response.body).to.have.property('token').have.length.greaterThanOrEqual(1);
+
       });
     });
 
