@@ -85,6 +85,17 @@ const updateOne = async (collection, entity, id) => {
   }
 };
 
+const getById = async (collection, id) => {
+  try {
+    const result = await connection()
+      .then((db) => db.collection(collection)
+        .findOne({ _id: ObjectId(id) }));
+    return result || null;
+  } catch (err) {
+    return err.message;
+  }
+};
+
 module.exports = (collection) => ({
   createOne: (entity) => createOne(collection, entity),
   getAll: () => getAll(collection),
@@ -93,4 +104,5 @@ module.exports = (collection) => ({
   deleteAll: () => deleteAll(collection),
   updateOne: (entity, userId) => updateOne(collection, entity, userId),
   deleteOne: (userId) => deleteOne(collection, userId),
+  getById: (id) => getById(collection, id),
 });
