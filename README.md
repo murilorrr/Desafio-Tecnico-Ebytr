@@ -58,7 +58,7 @@ $ git clone git@github.com:murilorsv14/Desafio-Tecnico-Ebytr.git
 $ cd Desafio-Tecnico-Ebytr
 ```
 
-### Docker Method
+### :whale:Docker Method
 
 If you have docker installed, you can run with:
 
