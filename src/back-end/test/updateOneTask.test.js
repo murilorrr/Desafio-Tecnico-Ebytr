@@ -40,7 +40,7 @@ const updateTask = {
   status: 'pronto',
 }
 
-describe.only('PUT /task/:id', () => {
+describe('PUT /task/:id', () => {
   describe('É esperado ao atualizar uma tarefa:', () => {
     let response;
     let connection;
@@ -60,7 +60,7 @@ describe.only('PUT /task/:id', () => {
       MongoClient.connect.restore();
     });
 
-    describe.only('Quando é atualizado com sucesso', () => {
+    describe('Quando é atualizado com sucesso', () => {
       let id;
       beforeEach(async () => {
         await chai.request(server)
