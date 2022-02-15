@@ -22,3 +22,148 @@ const user = {
   email: 'rogerinho@gmail.com',
   password: '123451',
 };
+
+const loginUser = {
+  email: 'rogerinho@gmail.com',
+  password: '123451',
+};
+
+const task = {
+  title: 'Fake Task',
+  body: 'Fake Body',
+  status: 'pendente',
+}
+
+describe('GET /task', () => {
+  describe('É esperado ao buscar a lista de tarefa:', () => {
+    let response;
+    let connection;
+    let db;
+    let token;
+
+    before( async () => {
+      connection = await connectionMock();
+
+        sinon.stub(MongoClient, 'connect')
+          .resolves(connection);
+        
+        db = connection.db('ToDo-Ebytr');
+    });
+
+    after( async () => {
+      MongoClient.connect.restore();
+    });
+
+    describe('Quando é buscado com sucesso', () => {
+      beforeEach(async () => {
+        await chai.request(server)
+          .post('/user')
+          .set('content-type', 'application/json')
+          .send(user);
+
+        const loginResponse = await chai.request(server)
+        .post('/login')
+        .set('content-type', 'application/json')
+        .send(loginUser);
+
+        token = loginResponse.body.token;
+
+        await chai.request(server)
+        .post('/task')
+        .set(
+          {
+            'content-type': 'application/json',
+            'authorization': token,
+          })
+        .send(task);
+
+        response = await chai.request(server)
+        .get('/task')
+        .set(
+          {
+            'authorization': token,
+          }
+        );
+      });
+
+      afterEach(async () => {
+        await db.collection('User').deleteMany({});
+        await db.collection('Task').deleteMany({});
+      });
+
+      it('Retorna o código de status 200 OK com uma lista de Tarefas', () => {
+        expect(response).to.have.status(201);
+
+        expect(response.body).to.have.property('task');
+        
+        expect(response.body.task).to.be.a('array');
+        expect(response.body.task[0].title).to.be.equal('Fake Task');
+        expect(response.body.task[0].body).to.be.equal('Fake Body');
+        expect(response.body.task[0].status).to.be.equal('pendente');
+      });
+
+      it('tem a propriedade _id do mongoDB', () => {
+        expect(response.body.task[0]).have.a.property('_id');
+        expect(response.body.task[0]).have.a.property('_id').have.length.greaterThanOrEqual(1);
+      });
+    });
+
+    describe('quando é buscado com falha', () => {
+      let loginResponse;
+
+      beforeEach(async () => {
+        await chai.request(server)
+          .post('/user')
+          .set('content-type', 'application/json')
+          .send(user);
+
+        loginResponse = await chai.request(server)
+        .post('/login')
+        .set('content-type', 'application/json')
+        .send(loginUser);
+
+        token = loginResponse.body.token;
+
+        await chai.request(server)
+        .post('/task')
+        .set(
+          {
+            'content-type': 'application/json',
+            'authorization': token,
+          })
+        .send(task);
+      });
+
+      afterEach(async () => {
+        await db.collection('User').deleteMany({});
+        await db.collection('Task').deleteMany({});
+      });
+
+      describe('Quando há problema com o token:', () => {
+        it('Verifica se o token é valido', (done) => {
+          response = await chai.request(server)
+            .get('/task')
+            .set(
+              {
+                'authorization': 'token',
+              }
+            )
+            .end((err, res) => {
+              if (err) done(err);
+              expect(res.body).to.be.deep.equal({ code: 401, message: '"token" is not valid' });
+              done();
+            });
+        });
+        it('Verifica se o token existe', (done) => {
+          response = await chai.request(server)
+            .get('/task')
+            .end((err, res) => {
+              if (err) done(err);
+              expect(res.body).to.be.deep.equal({ code: 401, message: '"token" is not valid' });
+              done();
+            });
+        });
+      });
+    });
+  });
+});
