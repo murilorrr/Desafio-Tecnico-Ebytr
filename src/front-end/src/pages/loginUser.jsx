@@ -62,6 +62,9 @@ const LoginUser = () => {
       return
     }
     setWarning(error)
+    setTimeout(() => {
+      setWarning('')
+    }, 3000)
   }
 
   return (
