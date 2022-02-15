@@ -22,8 +22,6 @@ module.exports = async (user) => {
   const exists = await alreadyExists(email);
   if (exists) { throw errorHandler(StatusCodes.CONFLICT, 'User already registered'); }
 
-  // const token = generateJwt(user); // ToDo
-
   await User.createOne(user);
 
   return { user };

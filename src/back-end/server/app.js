@@ -12,7 +12,9 @@ const limiter = rateLimit({
 });
 // src=https://www.npmjs.com/package/express-rate-limit
 
-const { user, login, token } = require('../routes');
+const {
+  user, login, token, task,
+} = require('../routes');
 
 const app = express();
 app.use(bodyParser.json());
@@ -24,6 +26,8 @@ app.use('/user', user);
 app.use('/login', login);
 
 app.use('/token', token);
+
+app.use('/task', task);
 
 app.use(errorMiddleware);
 
