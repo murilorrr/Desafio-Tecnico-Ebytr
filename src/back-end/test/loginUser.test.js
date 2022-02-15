@@ -64,10 +64,11 @@ describe('POST /login', () => {
         await db.collection('User').deleteMany({});
       });
 
-      it('retorna um objeto com a propriedade "token" e o código de status 200 OK', () => {
+      it.only('retorna um objeto com a propriedade "token" e o código de status 200 OK', () => {
         expect(response).to.have.status(200);
         expect(response.body).to.have.property('token');
-        expect(response.body).to.have.property('token').not.to.be.deep.equal({});
+        expect(response.body).to.have.property('token').to.be.a('string');
+        expect(response.body).to.have.property('token').have.length.greaterThanOrEqual(1);
       });
     });
 
@@ -80,7 +81,7 @@ describe('POST /login', () => {
       });
 
       afterEach(async () => {
-        await db.collection('users').deleteMany({});
+        await db.collection('User').deleteMany({});
       });
 
       it('Será validado que o campo "email" é obrigatório', (done) => {
