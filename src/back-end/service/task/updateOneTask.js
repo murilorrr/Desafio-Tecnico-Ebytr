@@ -11,6 +11,8 @@ const taskSchema = Joi.object({
 });
 
 module.exports = async (task, taskId) => {
+  if (task.your) delete task.your;
+  if (task.id) delete task.id;
   const { error } = taskSchema.validate(task);
   if (error) throw errorHandler(StatusCodes.BAD_REQUEST, error.message);
 
