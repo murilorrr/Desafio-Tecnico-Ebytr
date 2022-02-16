@@ -44,6 +44,7 @@ export default function FilterTask() {
             value={status}
             className="form-select"
             aria-label="Default select example">
+            <option value="">Nenhuma Opção</option>
             <option value="pendente">Pendente</option>
             <option value="em andamento">Em andamento</option>
             <option value="pronto">Pronto</option>

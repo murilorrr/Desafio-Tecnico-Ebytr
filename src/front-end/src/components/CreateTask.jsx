@@ -112,7 +112,11 @@ export default function CreateTask() {
             value={body}
           />
 
-          <button type="button" onClick={createTaskFunction} disabled={lockButton}>
+          <button
+            className="btn submit-btn"
+            type="button"
+            onClick={createTaskFunction}
+            disabled={lockButton}>
             CREATE TASK
           </button>
         </div>

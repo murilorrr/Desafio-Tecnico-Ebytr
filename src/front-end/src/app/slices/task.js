@@ -11,14 +11,11 @@ export const taskSlice = createSlice({
       state.allTasks.push(action.payload);
     },
     getAllTaskAction: (state, action) => {
+      action.payload.forEach((task) => {
+        delete task.userId;
+      });
       state.allTasks = action.payload;
     },
-    deleteTaskAction: (state, action) => {
-      state.allTasks.splice(state.allTasks.indexOf(action.payload), 1);
-    },
-    // updateTask: (state, action) => {
-    //   state.allTasks.push();
-    // },
     filterTask: (state, action) => {
       state.visualizationTasks = action.payload;
     },
@@ -28,12 +25,7 @@ export const taskSlice = createSlice({
   }
 });
 
-export const {
-  createTaskAction,
-  initVisualization,
-  getAllTaskAction,
-  filterTask,
-  deleteTaskAction
-} = taskSlice.actions;
+export const { createTaskAction, initVisualization, getAllTaskAction, filterTask } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
