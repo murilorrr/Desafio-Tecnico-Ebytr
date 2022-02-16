@@ -10,6 +10,9 @@ export default function TaskCard(props) {
       <button type="button" onClick={() => console.log('clicou')} hidden={!your}>
         X
       </button>
+      <button type="button" onClick={() => console.log('clicou')} hidden={!your}>
+        O
+      </button>
       <p>{body}</p>
       <h3>{status}</h3>
     </div>
