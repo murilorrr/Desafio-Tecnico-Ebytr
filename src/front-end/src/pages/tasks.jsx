@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import '../assets/css/tasksPage.css';
 import { CreateTask, TaskList } from '../components';
 
-const Tasks = () => {
+function Tasks() {
   const history = useHistory();
 
   useEffect(() => {
@@ -18,9 +18,9 @@ const Tasks = () => {
     <div className="tasksPage">
       <CreateTask />
       <div>FILTER TASK</div>
-      <TaskList></TaskList>
+      <TaskList />
     </div>
   );
-};
+}
 
 export default Tasks;

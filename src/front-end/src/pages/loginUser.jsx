@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { loginUser, tokenValidate } from '../api/api';
 import { Warning } from '../components';
 
-const LoginUser = () => {
+function LoginUser() {
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [warning, setWarning] = useState('');
@@ -15,6 +15,7 @@ const LoginUser = () => {
     const { name, value } = target;
     if (name === 'email') return setEmail(value);
     if (name === 'password') return setPassword(value);
+    return undefined;
   };
 
   const validateToken = async (string) => {
@@ -28,18 +29,18 @@ const LoginUser = () => {
   const memoizedCallback = useCallback(async () => {
     const token = localStorage.getItem('token') || undefined;
     const tokenIsValid = await validateToken(token);
-    tokenIsValid ? history.push('tasks') : localStorage.clear();
+    return tokenIsValid ? history.push('tasks') : localStorage.clear();
   }, [history]);
 
   useEffect(() => {
     memoizedCallback();
-  }, [memoizedCallback]);
+  }, []);
 
-  const validateLogin = (email, password) => {
+  const validateLogin = (emailTask, passwordTask) => {
     const minPasswordLength = 6;
 
-    const validadeEmail = email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
-    const validatePass = password.length >= minPasswordLength;
+    const validadeEmail = emailTask.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+    const validatePass = passwordTask.length >= minPasswordLength;
     return validadeEmail && validatePass;
   };
 
@@ -53,8 +54,8 @@ const LoginUser = () => {
 
   const loginUserFunction = async () => {
     const { error, data } = await loginUser({
-      email: email,
-      password: password
+      email,
+      password
     });
     if (!error) {
       localStorage.setItem('token', data.token);
@@ -78,30 +79,34 @@ const LoginUser = () => {
           <div className="login-form">
             <form>
               <div className="form-group">
-                <label htmlFor="InputEmail">Email</label>
-                <input
-                  data-testid="input-Email"
-                  type="email"
-                  name="email"
-                  onChange={handleChange}
-                  className="form-control"
-                  value={email}
-                  id="InputEmail"
-                  placeholder="Enter email"
-                />
+                <label htmlFor="InputEmail">
+                  Email
+                  <input
+                    data-testid="input-Email"
+                    type="email"
+                    name="email"
+                    onChange={handleChange}
+                    className="form-control"
+                    value={email}
+                    id="InputEmail"
+                    placeholder="Enter email"
+                  />
+                </label>
               </div>
               <div className="form-group">
-                <label htmlFor="InputPassword">Password</label>
-                <input
-                  data-testid="input-Password"
-                  type="password"
-                  name="password"
-                  onChange={handleChange}
-                  className="form-control"
-                  value={password}
-                  id="InputPassword"
-                  placeholder="Enter Password"
-                />
+                <label htmlFor="InputPassword">
+                  Password
+                  <input
+                    data-testid="input-Password"
+                    type="password"
+                    name="password"
+                    onChange={handleChange}
+                    className="form-control"
+                    value={password}
+                    id="InputPassword"
+                    placeholder="Enter Password"
+                  />
+                </label>
               </div>
             </form>
           </div>
@@ -110,17 +115,16 @@ const LoginUser = () => {
             data-testid="submit-button"
             disabled={lockButton}
             onClick={loginUserFunction}
-            className="btn submit-button"
-          >
+            className="btn submit-button">
             Login now
           </button>
         </div>
         <p id="create-link">
-          Don't have an account yet? <Link to="createUser">Join today</Link>
+          Don&#39;t have an account yet? <Link to="createUser">Join today</Link>
         </p>
       </div>
     </div>
   );
-};
+}
 
 export default LoginUser;
