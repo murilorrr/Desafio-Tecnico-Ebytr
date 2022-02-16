@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { stateFilterAction, bodyFilterAction, titleFilterAction } from '../app/slices/filter';
 
 export default function FilterTask() {
@@ -8,8 +8,6 @@ export default function FilterTask() {
   const [status, setStatus] = useState('');
 
   const dispatch = useDispatch();
-  const atualState = useSelector((state) => state.filters);
-  console.log(atualState);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
