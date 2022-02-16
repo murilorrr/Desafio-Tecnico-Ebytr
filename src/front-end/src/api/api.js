@@ -9,11 +9,11 @@ const api = axios.create({
 async function createUser(user) {
   const response = await api
     .post('/user', user)
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
 }
@@ -21,11 +21,11 @@ async function createUser(user) {
 async function loginUser(user) {
   const token = await api
     .post('/login', user)
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return token;
 }
@@ -38,11 +38,11 @@ async function getAllTasks(token) {
         Authorization: token
       }
     })
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
 }
@@ -55,11 +55,11 @@ async function createTask(task, token) {
         Authorization: token
       }
     })
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
 }
@@ -72,11 +72,11 @@ async function updateTask(task, token, id) {
         Authorization: token
       }
     })
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
 }
@@ -89,11 +89,11 @@ async function deleteTask(token, id) {
         Authorization: token
       }
     })
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
 }
@@ -111,11 +111,11 @@ async function tokenValidate(token) {
         }
       }
     )
-    .then((response) => {
-      return { data: response.data };
+    .then((res) => {
+      return { data: res.data };
     })
     .catch((err) => {
-      return { error: err.response.data.message };
+      return { error: err.res.data.message };
     });
   return response;
   // retorn true or string error
