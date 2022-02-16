@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../assets/css/tasksPage.css';
-import { CreateTask, TaskList } from '../components';
+import { CreateTask, TaskList, FilterTask } from '../components';
 
 function Tasks() {
   const history = useHistory();
@@ -17,7 +17,7 @@ function Tasks() {
   return (
     <div className="tasksPage">
       <CreateTask />
-      <div>FILTER TASK</div>
+      <FilterTask />
       <TaskList />
     </div>
   );

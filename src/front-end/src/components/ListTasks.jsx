@@ -10,6 +10,7 @@ export default function ListTasks() {
   const [warning, setWarning] = useState('');
   const taskList = useSelector((state) => state.task.allTasks);
   const visibleTasks = useSelector((state) => state.task.visualizationTasks);
+  const filtersState = useSelector((state) => state.filters);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -19,7 +20,8 @@ export default function ListTasks() {
         const allTasks = await getAllTasks(token);
         dispatch(getAllTaskAction(allTasks.data.tasks));
       } catch (err) {
-        setWarning('your token was expired');
+        setWarning('your token was expired, reload the page');
+        localStorage.clear();
         setTimeout(() => {
           setWarning('');
         }, 3000);
@@ -29,17 +31,20 @@ export default function ListTasks() {
     fetchAllTasks();
   }, [dispatch]);
 
-  const filters = (tasksLists, { status = 'pendente', title = '', body = '' }) => {
-    tasksLists.filter((task) => task.status === status);
-    tasksLists.filter((task) => task.status === title);
-    tasksLists.filter((task) => task.status === body);
-    return tasksLists;
+  const filters = (tasksLists, filtersParameters) => {
+    let filteredList = tasksLists;
+    const { stateFilter, bodyFilter, titleFilter } = filtersParameters;
+    filteredList = filteredList.filter((task) => task.status.includes(stateFilter));
+    filteredList = filteredList.filter((task) => task.title.includes(titleFilter));
+    filteredList = filteredList.filter((task) => task.body.includes(bodyFilter));
+    return filteredList;
   };
 
   useEffect(() => {
-    const filteredList = filters(taskList, {});
+    const { stateFilter, bodyFilter, titleFilter } = filtersState;
+    const filteredList = filters(taskList, { stateFilter, bodyFilter, titleFilter });
     dispatch(filterTask(filteredList));
-  }, [taskList, dispatch]);
+  }, [taskList, dispatch, filtersState]);
 
   return (
     <div>
