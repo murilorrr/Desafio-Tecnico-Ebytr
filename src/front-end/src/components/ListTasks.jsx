@@ -48,10 +48,8 @@ export default function ListTasks() {
 
   return (
     <div>
-      OUTSIDE
       <Warning warning={warning} />
-      <div>
-        DIV DE CARDS
+      <div style={{ padding: '1em', backgroundColor: 'white', margin: '2em' }}>
         {/* recebe do estado global o visualization tasks */}
         {visibleTasks.map(({ _id: id, title, body, your, status }) => (
           <TaskCard id={id} title={title} body={body} status={status} your={your} key={id} />
