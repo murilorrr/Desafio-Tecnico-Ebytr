@@ -17,43 +17,40 @@ describe('1 - Teste da Página de Login', () => {
   });
 
   describe('Teste de verificação dos elementos na tela', () => {
-
     test('Existe uma mensagem de boas vindas na tela /', () => {
       render(
-        <Router history={ history }>
+        <Router history={history}>
           <App />
-        </Router>,
+        </Router>
       );
       expect(screen.getByText(/Welcome back/i)).toBeInTheDocument();
     });
 
     test('Existe um input de Email na tela /', () => {
       render(
-        <Router history={ history }>
+        <Router history={history}>
           <App />
-        </Router>,
+        </Router>
       );
       expect(screen.getByTestId('input-Email')).toBeInTheDocument();
     });
 
     test('Existe um input de Passoword na tela  /', () => {
       render(
-        <Router history={ history }>
+        <Router history={history}>
           <App />
-        </Router>,
+        </Router>
       );
       expect(screen.getByTestId('input-Password')).toBeInTheDocument();
     });
 
     test('Existe um botão de submissão na tela  /', () => {
-        render(
-          <Router history={ history }>
-            <App />
-          </Router>,
-        );
-        expect(screen.getByTestId('submit-button')).toBeInTheDocument();
+      render(
+        <Router history={history}>
+          <App />
+        </Router>
+      );
+      expect(screen.getByTestId('submit-button')).toBeInTheDocument();
     });
-
   });
-
 });

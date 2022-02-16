@@ -18,9 +18,9 @@ describe('1 - Teste de Rotas', () => {
 
   test('Rota /', () => {
     render(
-      <Router history={ history }>
+      <Router history={history}>
         <App />
-      </Router>,
+      </Router>
     );
     history.push('/');
     expect(screen.getByText(/Welcome back/i)).toBeInTheDocument();
@@ -28,19 +28,19 @@ describe('1 - Teste de Rotas', () => {
 
   test('Rota /createUser', () => {
     render(
-      <Router history={ history }>
+      <Router history={history}>
         <App />
-      </Router>,
+      </Router>
     );
     history.push('/createUser');
     expect(screen.getByText(/Welcome/i)).toBeInTheDocument();
   });
-  
+
   test('Rota /tasks', () => {
     render(
-      <Router history={ history }>
+      <Router history={history}>
         <App />
-      </Router>,
+      </Router>
     );
     history.push('/');
     expect(screen.getByText(/Hello/i)).toBeInTheDocument();

@@ -1,80 +1,80 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import '../assets/css/createTask.css'
-import { createTask } from '../api/api'
-import {Warning} from '.'
-import { useDispatch } from 'react-redux'
-import { createTaskAction } from '../app/slices/task'
+import React, { useState, useEffect, useCallback } from 'react';
+import '../assets/css/createTask.css';
+import { createTask } from '../api/api';
+import { Warning } from '.';
+import { useDispatch } from 'react-redux';
+import { createTaskAction } from '../app/slices/task';
 
 const style = {
-  padding: '2em',
-}
+  padding: '2em'
+};
 
 export default function CreateTask() {
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-  const [warning, setWarning] = useState('')
-  const [status, setStatus] = useState('pendente')
-  const [lockButton, setLockButton] = useState(false)
+  const [title, setTitle] = useState('');
+  const [body, setBody] = useState('');
+  const [warning, setWarning] = useState('');
+  const [status, setStatus] = useState('pendente');
+  const [lockButton, setLockButton] = useState(false);
 
   const dispatch = useDispatch();
 
   const handleChange = ({ target }) => {
-    const { name, value } = target
-    if (name === 'title') return setTitle(value)
-    if (name === 'body') return setBody(value)
-    if (name === 'status') return setStatus(value)
-  }
+    const { name, value } = target;
+    if (name === 'title') return setTitle(value);
+    if (name === 'body') return setBody(value);
+    if (name === 'status') return setStatus(value);
+  };
 
-  const memoizedCallback = useCallback(()=>{
-
+  const memoizedCallback = useCallback(() => {
     const validateCreateTask = (title, body, status) => {
-      const statusOptions = ['em andamento','pendente','pronto']
-      const minTitleLength = 3
-      const minBodyLength = 3
-  
-      const validateTitle = title.length >= minTitleLength
-      const validateBody = body.length >= minBodyLength
-      const validateStatus = statusOptions.includes(status)
-  
-      return validateStatus && validateTitle && validateBody
-    }
+      const statusOptions = ['em andamento', 'pendente', 'pronto'];
+      const minTitleLength = 3;
+      const minBodyLength = 3;
+
+      const validateTitle = title.length >= minTitleLength;
+      const validateBody = body.length >= minBodyLength;
+      const validateStatus = statusOptions.includes(status);
+
+      return validateStatus && validateTitle && validateBody;
+    };
 
     if (validateCreateTask(title, body, status)) {
-      setLockButton(false)
+      setLockButton(false);
     } else {
-      setLockButton(true)
+      setLockButton(true);
     }
-  }, [title, body, status])
+  }, [title, body, status]);
 
   useEffect(() => {
     memoizedCallback();
-  }, [memoizedCallback])
+  }, [memoizedCallback]);
 
   const createTaskFunction = async () => {
     const token = localStorage.getItem('token');
 
-    const { error, data } = await createTask({
-      title: title,
-      body: body,
-      status: status
-    },
-    token)
+    const { error, data } = await createTask(
+      {
+        title: title,
+        body: body,
+        status: status
+      },
+      token
+    );
     if (!error) {
-      data.task.your = true
-      dispatch(createTaskAction(data.task))
-      return
+      data.task.your = true;
+      dispatch(createTaskAction(data.task));
+      return;
     }
-    setWarning(`${error}, reload the page`)
+    setWarning(`${error}, reload the page`);
     setTimeout(() => {
-      setWarning('')
-    }, 3000)
-  }
-
+      setWarning('');
+    }, 3000);
+  };
 
   return (
     <div style={style}>
       <div className="form-create-task">
-        <Warning warning={warning}/>
+        <Warning warning={warning} />
         <div>
           <input
             data-testid="input-Title"
@@ -112,9 +112,11 @@ export default function CreateTask() {
             value={body}
           ></textarea>
 
-          <button onClick={createTaskFunction} disabled={lockButton}>CREATE TASK</button>
+          <button onClick={createTaskFunction} disabled={lockButton}>
+            CREATE TASK
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }

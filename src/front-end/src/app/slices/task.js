@@ -1,13 +1,15 @@
-import { createSlice} from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const taskSlice = createSlice({
-  name:'task', 
+  name: 'task',
   initialState: {
     visualizationTasks: [],
-    allTasks: [],
+    allTasks: []
   },
   reducers: {
-    createTaskAction: (state, action) => { state.allTasks.push(action.payload) },
+    createTaskAction: (state, action) => {
+      state.allTasks.push(action.payload);
+    },
     getAllTaskAction: (state, action) => {
       state.allTasks = action.payload;
     },
@@ -18,16 +20,16 @@ export const taskSlice = createSlice({
     // updateTask: (state, action) => {
     //   state.allTasks.push();
     // },
-    filterTask: (state, action) => { state.visualizationTasks = action.payload },
+    filterTask: (state, action) => {
+      state.visualizationTasks = action.payload;
+    },
     initVisualization: (state) => {
-      state.visualizationTasks = state.allTasks
+      state.visualizationTasks = state.allTasks;
     }
   }
-})
+});
 
-export const {
-  createTaskAction,
-  initVisualization,
-  getAllTaskAction, filterTask } = taskSlice.actions;
+export const { createTaskAction, initVisualization, getAllTaskAction, filterTask } =
+  taskSlice.actions;
 
 export default taskSlice.reducer;
