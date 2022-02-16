@@ -21,7 +21,7 @@ export default function FilterTask() {
     dispatch(stateFilterAction(status));
     dispatch(bodyFilterAction(body));
     dispatch(titleFilterAction(title));
-  }, [status, body, title]);
+  }, [status, body, title, dispatch]);
 
   return (
     <div style={{ padding: ' 0 2em' }}>
