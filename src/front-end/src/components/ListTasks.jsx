@@ -39,7 +39,7 @@ export default function ListTasks() {
   useEffect(() => {
     const filteredList = filters(taskList, {});
     dispatch(filterTask(filteredList));
-  }, [taskList]);
+  }, [taskList, dispatch]);
 
   return (
     <div>
