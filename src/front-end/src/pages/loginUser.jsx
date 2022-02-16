@@ -34,7 +34,7 @@ function LoginUser() {
 
   useEffect(() => {
     memoizedCallback();
-  }, []);
+  }, [memoizedCallback]);
 
   const validateLogin = (emailTask, passwordTask) => {
     const minPasswordLength = 6;
