@@ -28,31 +28,31 @@ export default function TaskCard(props) {
     };
 
     return (
-      <div id={id}>
-        <input
-          data-testid="input-Title"
-          type="text"
-          name="title"
-          className="form-control"
-          id="InputTitle"
-          value={titleEdit}
-          onChange={handleChange}
-          placeholder="Enter Title Task"
-        />
-        <button className="btn submit-btn" type="button" onClick={deleteTaskById} hidden={!your}>
-          DELETE
-        </button>
-        <button
-          className="btn submit-btn"
-          type="button"
-          onClick={() => {
-            // troca o h1 e p por select e input
-            updateTask({ title: titleEdit, body: bodyEdit, status: statusEdit }, token, id);
-            setEdit(false);
-          }}
-          hidden={!your}>
-          EDIT
-        </button>
+      <div
+        style={{ padding: '10px', backgroundColor: '#66CCCC', border: '1px solid black' }}
+        id={id}>
+        <div style={{ display: 'flex' }}>
+          <input
+            data-testid="input-Title"
+            type="text"
+            name="title"
+            className="form-control"
+            id="InputTitle"
+            value={titleEdit}
+            onChange={handleChange}
+            placeholder="Enter Title Task"
+          />
+          <select
+            onChange={handleChange}
+            name="status"
+            value={statusEdit}
+            className="form-select custom-select"
+            aria-label="Default select example">
+            <option value="pendente">Pendente</option>
+            <option value="em andamento">Em andamento</option>
+            <option value="pronto">Pronto</option>
+          </select>
+        </div>
         <textarea
           data-testid="input-Body"
           type="text"
@@ -63,38 +63,59 @@ export default function TaskCard(props) {
           id="floatingTextarea"
           value={bodyEdit}
         />
-        <select
-          onChange={handleChange}
-          name="status"
-          value={statusEdit}
-          className="form-select"
-          aria-label="Default select example">
-          <option value="pendente">Pendente</option>
-          <option value="em andamento">Em andamento</option>
-          <option value="pronto">Pronto</option>
-        </select>
+
+        <div className="buttons">
+          <button
+            className="btn btn-danger submit-btn"
+            type="button"
+            onClick={deleteTaskById}
+            hidden={!your}>
+            DELETE
+          </button>
+          <button
+            className="btn btn-success submit-btn"
+            type="button"
+            onClick={() => {
+              // troca o h1 e p por select e input
+              updateTask({ title: titleEdit, body: bodyEdit, status: statusEdit }, token, id);
+              setEdit(false);
+            }}
+            hidden={!your}>
+            EDITED
+          </button>
+        </div>
       </div>
     );
   };
 
   const defaultCard = () => {
     return (
-      <div id={id}>
-        <h1>{titleEdit}</h1>
-        <button className="btn submit-btn" type="button" onClick={deleteTaskById} hidden={!your}>
-          DELETE
-        </button>
-        <button
-          type="button"
-          className="btn submit-btn"
-          onClick={() => {
-            setEdit(true);
-          }}
-          hidden={!your}>
-          EDIT
-        </button>
-        <p>{bodyEdit}</p>
-        <h3>{statusEdit}</h3>
+      <div
+        style={{ padding: '10px', backgroundColor: '#66CCCC', border: '1px solid black' }}
+        id={id}>
+        <div style={{ display: 'flex' }}>
+          <h1>Title: {titleEdit}</h1>
+          <h3 style={{ marginLeft: 'auto' }}>{statusEdit}</h3>
+        </div>
+        <p> {bodyEdit}</p>
+        <div className="buttons">
+          <button
+            className="btn btn-danger submit-btn"
+            type="button"
+            onClick={deleteTaskById}
+            hidden={!your}>
+            DELETE
+          </button>
+          <button
+            type="button"
+            className="btn btn-warning submit-btn"
+            onClick={() => {
+              setEdit(true);
+            }}
+            hidden={!your}>
+            EDIT
+          </button>
+        </div>
       </div>
     );
   };
