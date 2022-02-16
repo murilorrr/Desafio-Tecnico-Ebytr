@@ -1,24 +1,24 @@
-import React from 'react'
+import React from 'react';
 
 const warningVisibleStyle = {
   backgroundColor: 'red',
   position: 'absolute',
   top: 0,
-  visibility: 'visible',
-}
+  visibility: 'visible'
+};
 const warningNonVisibleStyle = {
   backgroundColor: 'red',
   position: 'absolute',
   top: 0,
-  visibility: 'hidden',
-}
+  visibility: 'hidden'
+};
 
 export default function Warning(props) {
-  const { warning } = props
+  const { warning } = props;
 
   return (
     <div style={warning === '' ? warningNonVisibleStyle : warningVisibleStyle}>
       WARNING: {warning}
     </div>
-  )
+  );
 }
