@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { loginUser, tokenValidate } from '../api/api'
-import Warning from '../components/warning'
+import { Warning } from '../components'
 
 const LoginUser = () => {
   const [password, setPassword] = useState('')
