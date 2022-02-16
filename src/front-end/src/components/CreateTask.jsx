@@ -92,11 +92,11 @@ export default function CreateTask() {
             onChange={handleChange}
             name="status"
             value={status}
-            className="form-select"
+            className="form-select custom-select"
             aria-label="Default select example">
-            <option value="pendente">Pendente</option>
-            <option value="em andamento">Em andamento</option>
-            <option value="pronto">Pronto</option>
+            <option value="pendente">Pending</option>
+            <option value="em andamento">In Progress</option>
+            <option value="pronto">Ready</option>
           </select>
         </div>
 
@@ -113,7 +113,7 @@ export default function CreateTask() {
           />
 
           <button
-            className="btn submit-btn"
+            className="btn submit-btn btn-success"
             type="button"
             onClick={createTaskFunction}
             disabled={lockButton}>

@@ -24,9 +24,9 @@ export default function FilterTask() {
   }, [status, body, title]);
 
   return (
-    <div style={{ padding: '2em' }}>
-      <div className="filters-tasks">
-        <div>
+    <div style={{ padding: ' 0 2em' }}>
+      <div style={{ backgroundColor: '#66CCCC' }} className="filters-tasks">
+        <div style={{ display: 'flex', flexDirection: 'row' }}>
           <input
             data-testid="input-Title"
             type="text"
@@ -42,12 +42,12 @@ export default function FilterTask() {
             onChange={handleChange}
             name="statusState"
             value={status}
-            className="form-select"
+            className="form-select custom-select"
             aria-label="Default select example">
-            <option value="">Nenhuma Opção</option>
-            <option value="pendente">Pendente</option>
-            <option value="em andamento">Em andamento</option>
-            <option value="pronto">Pronto</option>
+            <option value="">No option</option>
+            <option value="pendente">Pending</option>
+            <option value="em andamento">In progress</option>
+            <option value="pronto">Ready</option>
           </select>
         </div>
 
