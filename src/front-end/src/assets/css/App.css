@@ -6,6 +6,10 @@
   scroll-behavior: smooth;
 }
 
+body {
+  height: 100vh;
+}
+
 .form-group {
   margin-bottom: 0.5em;
   overflow: hidden;
