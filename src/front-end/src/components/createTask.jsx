@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import '../assets/css/createTask.css'
 import { createTask } from '../api/api'
 import {Warning} from '.'
@@ -25,25 +25,30 @@ export default function CreateTask() {
     if (name === 'status') return setStatus(value)
   }
 
-  const validateCreateTask = (title, body, stcreateTaskActionatus) => {
-    const statusOptions = ['em andamento','pendente','pronto']
-    const minTitleLength = 3
-    const minBodyLength = 3
+  const memoizedCallback = useCallback(()=>{
 
-    const validateTitle = title.length >= minTitleLength
-    const validateBody = body.length >= minBodyLength
-    const validateStatus = statusOptions.includes(status)
+    const validateCreateTask = (title, body, status) => {
+      const statusOptions = ['em andamento','pendente','pronto']
+      const minTitleLength = 3
+      const minBodyLength = 3
+  
+      const validateTitle = title.length >= minTitleLength
+      const validateBody = body.length >= minBodyLength
+      const validateStatus = statusOptions.includes(status)
+  
+      return validateStatus && validateTitle && validateBody
+    }
 
-    return validateStatus && validateTitle && validateBody
-  }
-
-  useEffect(() => {
     if (validateCreateTask(title, body, status)) {
       setLockButton(false)
     } else {
       setLockButton(true)
     }
   }, [title, body, status])
+
+  useEffect(() => {
+    memoizedCallback();
+  }, [memoizedCallback])
 
   const createTaskFunction = async () => {
     const token = localStorage.getItem('token');
@@ -58,7 +63,7 @@ export default function CreateTask() {
       dispatch(createTaskAction(data.task))
       return
     }
-    setWarning(error)
+    setWarning(`${error}, reload the page`)
     setTimeout(() => {
       setWarning('')
     }, 3000)
