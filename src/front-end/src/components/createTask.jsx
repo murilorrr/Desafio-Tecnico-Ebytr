@@ -60,6 +60,7 @@ export default function CreateTask() {
     },
     token)
     if (!error) {
+      data.task.your = true
       dispatch(createTaskAction(data.task))
       return
     }
