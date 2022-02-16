@@ -7,100 +7,100 @@ const api = axios.create({
 });
 
 async function createUser(user) {
-  const response = await api
+  const result = await api
     .post('/user', user)
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
 }
 
 async function loginUser(user) {
   const token = await api
     .post('/login', user)
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
   return token;
 }
 
 async function getAllTasks(token) {
-  const response = await api
+  const result = await api
     .get('/task', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
       }
     })
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
 }
 
 async function createTask(task, token) {
-  const response = await api
+  const result = await api
     .post('/task', task, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
       }
     })
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
 }
 
 async function updateTask(task, token, id) {
-  const response = await api
+  const result = await api
     .put(`/task/${id}`, task, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
       }
     })
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
 }
 
 async function deleteTask(token, id) {
-  const response = await api
+  const result = await api
     .delete(`/task/${id}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: token
       }
     })
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
 }
 
 async function tokenValidate(token) {
   // token are a string
-  const response = await api
+  const result = await api
     .post(
       '/token',
       {},
@@ -111,13 +111,13 @@ async function tokenValidate(token) {
         }
       }
     )
-    .then((res) => {
-      return { data: res.data };
+    .then((response) => {
+      return { data: response.data };
     })
     .catch((err) => {
-      return { error: err.res.data.message };
+      return { error: err.response.data.message };
     });
-  return response;
+  return result;
   // retorn true or string error
 }
 
