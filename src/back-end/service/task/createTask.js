@@ -3,11 +3,13 @@ const { StatusCodes } = require('http-status-codes');
 const { errorHandler } = require('../../utils/index');
 const Task = require('../../model')('Task');
 
+const JoiSringRequired = Joi.string().required();
+
 const taskSchema = Joi.object({
-  title: Joi.string().required(),
-  body: Joi.string().required(),
-  status: Joi.string().required().valid('pendente', 'em andamento', 'pronto'),
-  userId: Joi.string().required(),
+  title: JoiSringRequired,
+  body: JoiSringRequired,
+  status: JoiSringRequired.valid('pendente', 'em andamento', 'pronto'),
+  userId: JoiSringRequired,
 });
 
 module.exports = async (task) => {
