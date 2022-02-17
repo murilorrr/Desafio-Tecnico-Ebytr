@@ -2,10 +2,12 @@
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/context:javascript)
 
-
-
-![Imagem preview](https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/projectReact.svg?raw=true)
-![Login page](https://github.com/[murilorsv14]/[Desafio-Tecnico-Ebytr]/blob/[main]/LoginPage.png?raw=true)
+<p align="center">
+  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/projectReact.svg?raw=true" width="auto" title="Image sketch">
+  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/CreateUserPage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/LoginPage.png?raw=true" width="49.5%" heigth="50%" title="Login page">
+  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/TaskPage.png?raw=true" width="auto" heigth="auto" title="Task page">
+</p>
 
 <p align="center">A minimal, clean and almost beautiful ToDo Tasks</p>
 
