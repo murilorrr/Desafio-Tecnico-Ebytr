@@ -92,6 +92,14 @@ If everything is ok, you will be able to open at:
 http://localhost:3000
 ```
 
+## 👣 Next steps
+
+- remove .env and deploy
+- create a mongoDb database in Atlas
+- feature: logout
+- abstract model layer with mongoose
+- improve unit tests
+
 ## :handshake: **Contributing**
 
 This project is for study purposes too, so send me an email telling me what you are doing and why you are doing it, teach me what you know
