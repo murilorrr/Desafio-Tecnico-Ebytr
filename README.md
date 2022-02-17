@@ -114,4 +114,4 @@ All kinds of contributions are very welcome and appreciated!
 - 📥 Submit PRs to help solve issues or add features
 - ✋ Influence the future of ToDo-Ebytr with feature requests
 
-And make sure to read the [Contributing Guide](/CONTRIBUTION.md) before making a pull request.
+To learn how to contribute and a little more about the implemented architecture, read the [Contributing Guide](/CONTRIBUTION.md) before making the pull request.
