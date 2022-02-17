@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { SelectStatus } from '.';
 import { stateFilterAction, bodyFilterAction, titleFilterAction } from '../app/slices/filter';
 
 export default function FilterTask() {
@@ -38,17 +39,9 @@ export default function FilterTask() {
             placeholder="Filter by Title Task"
           />
 
-          <select
-            onChange={handleChange}
-            name="statusState"
-            value={status}
-            className="form-select custom-select"
-            aria-label="Default select example">
+          <SelectStatus data-testid={undefined} value={status} handleChange={handleChange} >
             <option value="">No option</option>
-            <option value="pendente">Pending</option>
-            <option value="em andamento">In progress</option>
-            <option value="pronto">Ready</option>
-          </select>
+          </SelectStatus>
         </div>
 
         <div>

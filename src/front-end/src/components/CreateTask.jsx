@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import '../assets/css/createTask.css';
 import { useDispatch } from 'react-redux';
 import { createTask } from '../api/api';
-import { Warning } from '.';
+import { SelectStatus, Warning } from '.';
 import { createTaskAction } from '../app/slices/task';
 
 const style = {
@@ -88,17 +88,7 @@ export default function CreateTask() {
             placeholder="Enter Title Task"
           />
 
-          <select
-            onChange={handleChange}
-            name="status"
-            value={status}
-            data-testid="select-createTask-status"
-            className="form-select custom-select"
-            aria-label="Default select example">
-            <option value="pendente">Pending</option>
-            <option value="em andamento">In Progress</option>
-            <option value="pronto">Ready</option>
-          </select>
+          <SelectStatus dataTestId='select-createTask-status' handleChange={handleChange} value={status} />
         </div>
 
         <div>
