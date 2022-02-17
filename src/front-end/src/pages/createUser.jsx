@@ -59,8 +59,8 @@ const CreateUser = () => {
       password: password
     });
     if (!error) {
-      localStorage.setItem('token', JSON.stringify(data));
-      history.push('tasks');
+      localStorage.setItem('token', data.token);
+      history.push('/tasks');
       return;
     }
     setWarning(error);
