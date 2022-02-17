@@ -65,14 +65,12 @@ We decided to follow some MSC to guide our backend architecture. Here is a quick
 
  - `public`: This layer has all the static files of the system made available by http;
  - `src`: Source of all front-end code;
-   - `api`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `app`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `assets`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `components`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `pages`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `test`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
-   - `utils`: Lorem ipsum dolor sit amet, consectetur adipiscing elit;
- 
+   - `api`: This layer has all fetch into your API using axios;
+   - `app`: This layer are a redux and yours slices;
+   - `assets`: This layers concentrate your styles and images;
+   - `components`: Here our components are stored so they can be reused;
+   - `pages`: Folder responsible for storing system pages;
+   - `test`: This layer makes everything, including coffee;
 
 
 > This project has integration with LGTM automated code review
