@@ -34,14 +34,16 @@ At Ebytr the development team uses Stack MERN to create their applications. It h
   <br>
 </h1>
 
-- [Eslint](https://eslint.org/)
-- [Redux](https://github.com/reduxjs/react-redux)
-- [MongoDB](https://www.mongodb.com/)
 - [Node](https://nodejs.org/en/)
+- [Redux](https://github.com/reduxjs/react-redux)
+- [Docker](https://www.docker.com/)
+- [React](https://reactjs.org/)
+- [MongoDB](https://www.mongodb.com/)
 - [Express](https://expressjs.com/)
-- [Joi](https://joi.dev/)
 - [Mocha](https://mochajs.org/)
 - [Chai](https://www.chaijs.com/)
+- [Eslint](https://eslint.org/)
+- [Joi](https://joi.dev/)
 
 and much more...
 
