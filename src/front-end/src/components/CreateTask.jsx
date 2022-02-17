@@ -78,7 +78,7 @@ export default function CreateTask() {
         <Warning warning={warning} />
         <div>
           <input
-            data-testid="input-Title"
+            data-testid="input-createTask-Title"
             type="text"
             name="title"
             className="form-control"
@@ -92,6 +92,7 @@ export default function CreateTask() {
             onChange={handleChange}
             name="status"
             value={status}
+            data-testid="select-createTask-status"
             className="form-select custom-select"
             aria-label="Default select example">
             <option value="pendente">Pending</option>
@@ -102,9 +103,9 @@ export default function CreateTask() {
 
         <div>
           <textarea
-            data-testid="input-Body"
             type="text"
             name="body"
+            data-testid="textArea-createTask-body"
             onChange={handleChange}
             className="form-control"
             placeholder="Task description"
