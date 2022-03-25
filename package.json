@@ -4,7 +4,8 @@
   "description": "Repositorio destinado ao blitz de desafio tecnico da trybe, com o objetivo de implementar um ToDo como sistema fullStack",
   "main": "index.js",
   "scripts": {
-    "back": "node ./back-end/server/index.js"
+    "back": "node ./back-end/server/index.js",
+    "front": "cd ./src/front-end && npm start"
   },
   "repository": {
     "type": "git",
@@ -22,14 +23,7 @@
   },
   "homepage": "https://github.com/murilorsv14/Desafio-Tecnico-Ebytr#readme",
   "dependencies": {
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.8.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.4",
-    "prettier": "2.5.1",
-    "prettier-eslint": "^13.0.0"
   }
 }
