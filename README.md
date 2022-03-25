@@ -89,6 +89,10 @@ $ npm start
 $ cd src/front-end or ../back-end
 $ npm install
 $ npm start
+# coverage
+<p align="center">
+    <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+</p>
 ```
 
 If everything is ok, you will be able to open at:
@@ -104,6 +108,12 @@ http://localhost:3000
 - feature: logout
 - abstract model layer with mongoose
 - improve unit tests
+
+
+# coverage
+<p align="center">
+    <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+</p>
 
 ## :handshake: **Contributing**
 
