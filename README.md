@@ -1,12 +1,12 @@
 # Desafio-Tecnico-Ebytr Monorepo
-[![Total alerts](https://img.shields.io/lgtm/alerts/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/alerts/)
-[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/murilorsv14/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorsv14/Desafio-Tecnico-Ebytr/context:javascript)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/murilorrr/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorrr/Desafio-Tecnico-Ebytr/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/murilorrr/Desafio-Tecnico-Ebytr.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/murilorrr/Desafio-Tecnico-Ebytr/context:javascript)
 
 <p align="center">
-  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/projectReact.svg?raw=true" width="auto" title="Image sketch">
-  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/CreateUserPage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
-  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/LoginPage.png?raw=true" width="49.5%" heigth="50%" title="Login page">
-  <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/TaskPage.png?raw=true" width="auto" heigth="auto" title="Task page">
+  <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/projectReact.svg?raw=true" width="auto" title="Image sketch">
+  <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/CreateUserPage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+  <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/LoginPage.png?raw=true" width="49.5%" heigth="50%" title="Login page">
+  <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/TaskPage.png?raw=true" width="auto" heigth="auto" title="Task page">
 </p>
 
 <p align="center">A minimal, clean and almost beautiful ToDo Tasks</p>
@@ -17,7 +17,7 @@
   <a href="#blush-why">Why</a> •
   <a href="#zap-tech-stack">Tech Stack</a> •
   <a href="#handshake-contributing">Contributing</a> •
-  <a href="https://github.com/murilorsv14">About Me</a>
+  <a href="https://github.com/murilorrr">About Me</a>
 </p>
 
 ## :blush: **Why?**
@@ -59,7 +59,7 @@ and much more...
 Clone the project from Github :
 
 ```sh
-$ git clone git@github.com:murilorsv14/Desafio-Tecnico-Ebytr.git
+$ git clone git@github.com:murilorrr/Desafio-Tecnico-Ebytr.git
 $ cd Desafio-Tecnico-Ebytr
 ```
 
@@ -91,7 +91,7 @@ $ npm install
 $ npm start
 # coverage
 <p align="center">
-    <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+    <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
 </p>
 ```
 
@@ -112,7 +112,7 @@ http://localhost:3000
 
 # coverage
 <p align="center">
-    <img src="https://github.com/murilorsv14/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
+    <img src="https://github.com/murilorrr/Desafio-Tecnico-Ebytr/blob/main/coverage.png?raw=true" width="49.5%" heigth="50%" title="Create user page">
 </p>
 
 ## :handshake: **Contributing**
